@@ -12,7 +12,8 @@ function sendNameToOS(){
 function loadSubmissionResults(){
     OneSignal.push(function() {
         OneSignal.getTags(function(tags) {
-          alert(tags.first_name + " " + tags.last_name);
+            document.getElementById("first_name").value = tags.first_name;
+            document.getElementById("last_name").value = tags.last_name;
         });
       });
 }
