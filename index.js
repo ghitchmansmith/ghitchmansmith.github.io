@@ -12,7 +12,7 @@ function sendNameToOS(){
 function loadSubmissionResults(){
     OneSignal.push(function() {
         OneSignal.getTags(function(tags) {
-          alert(tags);
+          alert(tags.first_name + " " + tags.last_name);
         });
       });
 }
