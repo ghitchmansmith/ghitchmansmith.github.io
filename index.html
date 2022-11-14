@@ -1,7 +1,20 @@
 <html>
-  <head>
-      <link rel="stylesheet" type="text/css" href="index.css" media="screen"/>
-  </head>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
+                safari_web_id: "web.onesignal.auto.428d294a-5ce2-44bb-bee0-dec3149a5564",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
+</head>
   <body>Test Commit 2
   </body>
 </html>
