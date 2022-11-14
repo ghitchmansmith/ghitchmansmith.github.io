@@ -2,6 +2,7 @@ function sendNameToOS(){
     var fName = document.getElementById("first_name");
     var lName = document.getElementById("last_name");
 
-    OneSignal.sendTag("first_name", fName);
-    OneSignal.sendTag("last_name", lName);
+    OneSignal.push(function(){
+        OneSignal.sendTags({"first_name": fName, "last_name": lName,});
+    });
 }
