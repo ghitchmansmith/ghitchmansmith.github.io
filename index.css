@@ -2,3 +2,10 @@
     background-color: #453854;
     color:#ffffff;
 }
+
+input, button {
+    border-radius: 10px;
+    border-color:#ffffff;
+    background-color:#453854;
+    color:#ffffff
+}
