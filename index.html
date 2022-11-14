@@ -13,6 +13,12 @@
                 },
             });
         });
+        OneSignal.push(function() {
+        /* These examples are all valid */
+            OneSignal.getUserId(function(userId) {
+                console.log("OneSignal User ID:", userId);
+            });
+        });
     </script>
     <script src="index.js"></script>
 </head>
