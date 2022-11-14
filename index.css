@@ -9,10 +9,14 @@ input, button {
     border-radius: 10px;
     border-color:#ffffff;
     background-color:#453854;
-    color:#ffffff
+    color:#ffffff;
+    margin:5px;
 }
 
 #main_div {
-    margin:auto;
-    top:40%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
