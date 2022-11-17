@@ -6,7 +6,9 @@ function sendNameToOS(){
         OneSignal.sendTags({"first_name": fName, "last_name": lName,}).then(function (tagsSent){
             loadSubmissionResults();
         });
-        OneSignal.setExternalUserId(fName + " " + lName);
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        OneSignal.setExternalUserId(fName + " " + lName + " " + date);
     });
 }
 
