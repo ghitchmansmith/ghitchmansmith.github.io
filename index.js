@@ -1,15 +1,15 @@
 function sendNameToOS(){
     var fName = document.getElementById("first_name").value;
     var lName = document.getElementById("last_name").value;
-    var emailAddress = document.getElementById("email").value;
+    //var emailAddress = document.getElementById("email").value;
 
     OneSignal.push(function(){
         OneSignal.sendTags({"first_name": fName, "last_name": lName,}).then(function (tagsSent){
             loadSubmissionResults();
         });
-        if(email != "" && email){
-            OneSignal.setEmail(email);  
-        }
+        //if(email != "" && email){
+        //    OneSignal.setEmail(email);  
+        //}
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         OneSignal.setExternalUserId(date);
