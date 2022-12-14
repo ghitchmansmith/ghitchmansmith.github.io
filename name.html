@@ -48,11 +48,13 @@
     <script src="index.js"></script>
 </head>
   <body>
-    <div style="color:black;position:absolute;top:0px;left:0px;width:100%;height:100px;background-color:#cacaca;">
-        Test
-    </div>
-    <iframe src="name.html" style="height:100%;width:100%;"></iframe>
 
+    <div id="main_div">
+        First Name:    <input type="text" id="first_name" name="first_name"><br>
+        Last Name:     <input type="text" id="last_name" name="last_name"><br>
+        <!-- Email Address: <input type="text" id="email" name="email"><br>-->
+        <button type="submit" id="submit" value="Submit" onclick="sendNameToOS()">Submit</button>
+    </div>
   </body>
   <script>loadSubmissionResults();</script>
 </html>
