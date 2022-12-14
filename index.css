@@ -24,12 +24,13 @@ input, button {
     text-align:center;
 }
 
-td {
-    width:100px;
-    border:1px solid black;
-}
-
 iframe {
     padding:0px;
     margin:0px;
+}
+
+.top_link {
+    color:black;
+    width:100px;
+    border:1px solid black;
 }
