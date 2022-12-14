@@ -21,3 +21,8 @@ input, button {
     transform: translate(-50%, -50%);
     text-align:center;
 }
+
+iframe {
+    padding:0px;
+    margin:0px;
+}
