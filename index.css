@@ -17,7 +17,7 @@ input, button {
 }
 
 #main_div {
-    position: absolute;
+    position: relative;
     left: 50%;
     -webkit-transform: translate(-50%);
     transform: translate(-50%);
