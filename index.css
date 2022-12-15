@@ -99,7 +99,10 @@ nav .menu-item:hover ~ #sub-menu-container #sub-menu-holder {
     opacity: 1;
     right: auto;
 }
-nav .menu-item:nth-of-type(1):hover ~ #sub-menu-container #sub-menu-holder,
+nav .menu-item:nth-of-type(1):hover ~ #sub-menu-container #sub-menu-holder { 
+    display:none;
+}
+
 nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
     clip-path: inset(0 28.75em 0 0 round 10px);
     height: 14em;
