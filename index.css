@@ -20,6 +20,8 @@ body {
     right:10px;
     color:white;
     font-family:verdana;
+    cursor:pointer;
+    font-size: 0.8em;
 }
 
 nav {
