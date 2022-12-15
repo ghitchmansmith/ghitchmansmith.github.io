@@ -13,15 +13,18 @@
             to recieve notifications. Doing so will create a new player ID, but will not delete the old player ID (which will now be set to 
             "Not Subscribed") within the Audience -> Users page of the OneSignal platform. 
             <br><br> 
-
+            To retrieve the user's player ID, you will need to run the following command:
             <br><br><br>
             <div class="code_box">
-                script tag test <BR>
-                    test tets test                script tag test <BR>
-                        test tets test                script tag test <BR>
-                            test tets test                script tag test <BR>
-                                test tets test                script tag test <BR>
-                                    test tets test
+                <code>
+                OneSignal.push(function() {
+                    /* These examples are all valid */
+                    OneSignal.getUserId(function(userId) {
+                        console.log("OneSignal User ID:", userId);
+                        // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+                    });
+                });
+                </code>
             </div>
         </div>
 
