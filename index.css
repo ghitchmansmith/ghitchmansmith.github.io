@@ -292,7 +292,7 @@ nav .menu-item:nth-of-type(4):hover ~ #sub-menu-container #sub-menu-holder {
 }
 
 .menu-item .icon-box:hover .icon, .menu-item .icon-box:hover .title, .menu-item .icon-box:hover .sub-text {
-    color: rgb(89 110 123);
+    color: rgb(0, 0, 0);
 }
 
 #sub-menu-bottom {
