@@ -14,7 +14,7 @@
             "Not Subscribed") within the Audience -> Users page of the OneSignal platform. 
             <br><br> 
             To retrieve the user's player ID, you will need to run the following command:
-            <br><br><br>
+            <br><br>
             <div class="code_box">
                 OneSignal.push(function() {
                 <br>&nbsp;&nbsp;OneSignal.getUserId(function(userId) {
@@ -22,9 +22,28 @@
                 <br>&nbsp;&nbsp;});
                 <br>});
             </div>
-            <br><br>
+            <br>
             If you have subscribed, your current player ID will be displayed in the box below:
+            <br>
             <div class="code_box" id="player_id"></div>
+            <br>
+            <div id="subtitle">External User IDs</div>
+            External user Ids are designed to connect multiple devices under one ID and can be set by you to any value of your choice. 
+            To set an External User ID, you will need to use the setExternalUserId method: 
+            <div class="code_box">
+                OneSignal.push(function() {
+                    <br>&nbsp;&nbsp;OneSignal.setExternalUserId(externalUserId);
+                <br>});
+            </div>
+            <br>
+            To retrive the users current External User ID, use the getExternalUserId function as below: 
+            <div class="code_box">
+                OneSignal.push(function() {
+                <br>&nbsp;&nbsp;OneSignal.getExternalUserId().then(function(externalUserId){
+                <br>&nbsp;&nbsp;});
+                <br>});
+            </div>
+        
         </div>
 
     </div>
