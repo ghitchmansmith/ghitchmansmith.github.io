@@ -1,42 +1,4 @@
-﻿body {
-    background-color: #453854;
-    color:#000000;
-    width:100%;
-    height:100%;
-    padding:0px;
-    margin:0px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-}
-
-input, button {
-    border-radius: 10px;
-    border-color:#ffffff;
-    background-color:#453854;
-    color:#ffffff;
-    margin:5px;
-}
-
-#main_div {
-    position: relative;
-    left: 50%;
-    -webkit-transform: translate(-50%);
-    transform: translate(-50%);
-    text-align:center;
-}
-
-iframe {
-    padding:0px;
-    margin:0px;
-}
-
-.top_link {
-    color:black;
-    width:100px;
-    border:1px solid black;
-    cursor:pointer;
-}
-
-:root {
+﻿:root {
     --menu-width: 37.5em; /* Width of menu */
     --items: 4; /* Number of items you have */
     --item-width: calc(var(--menu-width) / var(--items));
@@ -78,7 +40,6 @@ nav .menu-item {
     perspective: 200px;
     letter-spacing: 0.5px;
     min-height: 7.5em;
-    width:150px;
 }
 
 nav .menu-text, nav .menu-text a {
@@ -129,29 +90,25 @@ nav .menu-item:hover ~ #sub-menu-container #sub-menu-holder {
     right: auto;
 }
 nav .menu-item:nth-of-type(1):hover ~ #sub-menu-container #sub-menu-holder,
-nav .menu-item:nth-of-type(4):hover ~ #sub-menu-container #sub-menu-holder {
+nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
     clip-path: inset(0 28.75em 0 0 round 10px);
     height: 14em;
 }
 
-nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder,
-nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
+nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder {
     clip-path: inset(0 15em 0 0 round 10px);
 }
 
 nav .menu-item:nth-of-type(1):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(-9em + -1px);
-}
-nav .menu-item:nth-of-type(4):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(-6.5em + -1px);
-    height: 18.75em;
+    left: calc(-8em + -1px);
 }
 nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(2.75em + 1px);
-    height: 24.5em;
+    left: calc(-2.5em + -1px);
+    height: 18.75em;
 }
 nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(19em + 1px);
+    left: calc(16.5em + 1px);
+    height: 24.5em;
 }
 
 .menu-item .sub-menu {
@@ -292,7 +249,7 @@ nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
 }
 
 .menu-item .icon-box:hover .icon, .menu-item .icon-box:hover .title, .menu-item .icon-box:hover .sub-text {
-    color: rgb(0, 0, 0);
+    color: rgb(89 110 123);
 }
 
 #sub-menu-bottom {
