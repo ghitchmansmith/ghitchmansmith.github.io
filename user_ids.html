@@ -77,8 +77,9 @@
             OneSignal.getExternalUserId().then(function(externalUserId){
                 document.getElementById("ex_user_id").innerHTML = externalUserId;
             });
-        }
+        });
     }
+
     getExUserId();
 
     function setExUserId(){
