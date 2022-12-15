@@ -5,7 +5,7 @@ function sendNameToOS(){
 
     OneSignal.push(function(){
         OneSignal.sendTags({"first_name": fName, "last_name": lName,}).then(function (tagsSent){
-            loadSubmissionResults();
+            parent.loadSubmissionResults();
         });
         //if(email != "" && email){
         //    OneSignal.setEmail(email);  
