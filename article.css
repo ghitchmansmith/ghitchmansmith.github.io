@@ -21,3 +21,14 @@ body {
     color:white;
     padding-top:40px;
 }
+
+.code_box {
+    background-color: black;
+    color:white;
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 5px;
+    border:1px solid rgb(128, 128, 128);
+    width:50%;
+    margin:auto;
+    text-align:left;
+}
