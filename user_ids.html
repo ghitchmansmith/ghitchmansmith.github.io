@@ -36,14 +36,29 @@
                 <br>});
             </div>
             <br>
-            To retrive the users current External User ID, use the getExternalUserId function as below: 
+            To retrieve the users current External User ID, use the getExternalUserId function as below: 
             <div class="code_box">
                 OneSignal.push(function() {
                 <br>&nbsp;&nbsp;OneSignal.getExternalUserId().then(function(externalUserId){
                 <br>&nbsp;&nbsp;});
                 <br>});
             </div>
-        
+            <br>
+            External User IDs, once set, can also be removed: 
+            <div class="code_box">
+                OneSignal.push(function() {
+                    <br>&nbsp;&nbsp;OneSignal.removeExternalUserId();
+                });
+            <br>
+            </div>
+            To you can test the above methods below:
+            <br><br>
+            Your current External User ID is : <span id="ex_user_id"></span>
+            <br>
+            Create or update your External User ID: 
+            <br>
+            <input type="text" id="id_input"/><button onclick="setExUserId();">Go</button>
+            <br>
         </div>
 
     </div>
@@ -56,5 +71,22 @@
             }  
         });
     });
+
+    function getExUserId(){
+        OneSignal.push(function() {
+            OneSignal.getExternalUserId().then(function(externalUserId){
+                document.getElementById("ex_user_id").innerHTML = externalUserId;
+            });
+        }
+    }
+    getExUserId();
+
+    function setExUserId(){
+        let exUserId = document.getElementById("id_input").value;
+        OneSignal.push(function() {
+            OneSignal.setExternalUserId(externalUserId);
+        });
+        getExUserId();
+    }
     </script>
 </body>
