@@ -22,7 +22,7 @@ body {
     font-size:1.5em;
     color:white;
     margin:auto;
-    font-weight:600;
+    text-decoration: underline;
 }
 #article_body {
     margin:auto;
