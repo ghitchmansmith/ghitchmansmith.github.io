@@ -85,7 +85,7 @@
     function setExUserId(){
         let exUserId = document.getElementById("id_input").value;
         OneSignal.push(function() {
-            OneSignal.setExternalUserId(externalUserId);
+            OneSignal.setExternalUserId(exUserId);
         });
         getExUserId();
     }
