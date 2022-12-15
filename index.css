@@ -133,7 +133,7 @@ nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder {
     height: 18.75em;
 }
 nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(16.5em + 1px);
+    left: calc(15em + 1px);
     height: 24.5em;
 }
 
