@@ -33,3 +33,7 @@ function loadSubmissionResults(){
         });
       });
 }
+
+function changeName(){
+    document.getElementById("main_frame").src = "name.html";
+}
