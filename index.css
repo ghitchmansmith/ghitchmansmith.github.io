@@ -78,6 +78,7 @@ nav .menu-item {
     perspective: 200px;
     letter-spacing: 0.5px;
     min-height: 7.5em;
+    width:150px;
 }
 
 nav .menu-text, nav .menu-text a {
