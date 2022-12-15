@@ -1,4 +1,21 @@
 body {
-    background-color:rgb(95, 174, 243);
+    background-color:#ffffff;
     color:black;
+}
+
+#main {
+    width:80%;
+    margin:auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:2em;
+    color:rgb(70, 70, 70);
+    margin:auto;
+}
+#article_body {
+    margin:auto;
+    color:rgb(70, 70, 70);
+    padding-top:40px;
 }
