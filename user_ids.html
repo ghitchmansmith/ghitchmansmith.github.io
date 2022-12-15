@@ -54,11 +54,14 @@
             <br>
             To you can test the above methods below:
             <br><br>
-            Your current External User ID is : <span style="font-weight:600;" id="ex_user_id"></span>
-            <br><br>
-            Create or update your External User ID: 
-            <input type="text" id="id_input"/>&nbsp;&nbsp;<button onclick="setExUserId();">Submit</button>
-            <br>
+            <div style="width:80%;margin:auto;border:2px solid white;border-radius:5px;">
+                Your current External User ID is : <span style="font-weight:600;" id="ex_user_id"></span>
+                <br><br>
+                Create or update your External User ID: 
+                <input type="text" id="id_input"/>&nbsp;&nbsp;<button onclick="setExUserId();">Submit</button>
+                <br>
+                <button onclick="removeId();">Remove External User Id</button>
+            </div>
         </div>
 
     </div>
@@ -75,7 +78,11 @@
     function getExUserId(){
         OneSignal.push(function() {
             OneSignal.getExternalUserId().then(function(externalUserId){
-                document.getElementById("ex_user_id").innerHTML = externalUserId;
+                if(externalUserId){
+                    document.getElementById("ex_user_id").innerHTML = externalUserId;
+                } else {
+                    document.getElementById("ex_user_id").innerHTML = "No External User ID set.";
+                }
             });
         });
     }
@@ -88,6 +95,12 @@
             OneSignal.setExternalUserId(exUserId);
         });
         getExUserId();
+    }
+
+    function removeId(){
+        OneSignal.push(function() {
+            OneSignal.removeExternalUserId();
+        });
     }
     </script>
 </body>
