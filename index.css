@@ -1,13 +1,13 @@
 ﻿:root {
     --menu-width: 37.5em; /* Width of menu */
-    --items: 4; /* Number of items you have */
+    --items: 3; /* Number of items you have */
     --item-width: calc(var(--menu-width) / var(--items));
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #102eff, #d2379b);
+    background: linear-gradient(45deg, #920404, #fcfcfc);
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     overflow: hidden;
