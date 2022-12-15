@@ -16,6 +16,14 @@ body {
     margin:auto;
     font-weight:600;
 }
+#subtitle {
+    padding-top:20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:1.5em;
+    color:white;
+    margin:auto;
+    font-weight:600;
+}
 #article_body {
     margin:auto;
     color:white;
