@@ -34,6 +34,6 @@ function loadSubmissionResults(){
       });
 }
 
-function changeName(){
-    document.getElementById("main_frame").src = "name.html";
+function changePage(page_url){
+    document.getElementById("main_frame").src = page_url;
 }
