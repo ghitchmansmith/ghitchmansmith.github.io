@@ -20,10 +20,11 @@ body {
 #subtitle {
     padding-top:20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:1.5em;
+    font-size:1.2em;
     color:white;
     margin:auto;
     text-decoration: underline;
+    padding-bottom:5px;
 }
 #article_body {
     margin:auto;
@@ -43,4 +44,14 @@ body {
     margin:auto;
     text-align:left;
     padding:3px;
+}
+
+button {
+    padding:5px;
+    height:30px;
+    border-radius:10px;
+    background-color:white;
+    font-size:1em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight:600;
 }
