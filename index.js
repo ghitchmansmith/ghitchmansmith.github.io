@@ -19,12 +19,17 @@ function sendNameToOS(){
 function loadSubmissionResults(){
     OneSignal.push(function() {
         OneSignal.getTags(function(tags) {
+            var name_string = "Hello ";
             if(tags.first_name){
-                document.getElementById("first_name").value = tags.first_name;
+                name_string = name_string + " " + tags.first_name;
+                if(tags.last_name){
+                    name_string = name_string + " " +  tags.last_name;
+                }
+                name_string = name_string + "!";
+            } else {
+                name_string = "Please click here to enter your name";
             }
-            if(tags.last_name){
-                document.getElementById("last_name").value = tags.last_name;
-            }
+            document.getElementById("name_div").innerHTML = name_string; 
         });
       });
 }
