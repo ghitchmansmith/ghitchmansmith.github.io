@@ -105,7 +105,7 @@
         var value3 = document.getElementById("value3").value;
         OneSignal.push(function() {
             OneSignal.sendTags({key1:value1,key2:value2,key3:value3}, function(tagsSent) {
-                document.getElementById("sendTagsResult").innerHTML = key1 + " : " + value1 + "<br>" +  key2 + " : " + value2 + "<br>" +  key3 + " : " + value3;
+                document.getElementById("sendTagsResult").innerHTML = "<br>" + key1 + " : " + value1 + "<br>" +  key2 + " : " + value2 + "<br>" +  key3 + " : " + value3;
             });
         });
     }
