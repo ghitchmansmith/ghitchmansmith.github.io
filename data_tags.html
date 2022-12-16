@@ -14,6 +14,7 @@
             Data tags can be set using one of two methods: <b>sendTag</b> or <b>sendTags</b>. The difference between the two,
             as the name suggests, is simply that sendTag only sends a single tag, whereas sendTags can send multiple at once.
             Let's look at sendTag first:
+            <br><br>
             <div class="code_box">
                 OneSignal.push(function() {
                 <br>&nbsp;&nbsp;OneSignal.sendTag("key", "value", function(tagsSent) {
@@ -21,10 +22,50 @@
                 <br>&nbsp;&nbsp;});
                 <br>);
             </div>
+            <br>
+            sendTag simply takes the key and value as seperate parameters, followed by an optional callback function. 
+            <br>
+            <br>
+            sendTags, however, takes a JSON object containing a list of key value pairs followed by an optional callback function:
+            <br><br>
+            <div class="code_box">
+                OneSignal.push(function() {
+                <br>&nbsp;&nbsp;OneSignal.sendTags({
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;key: 'value',
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;key2: 'value2',
+                <br>&nbsp;&nbsp;}).then(function(tagsSent) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending    
+                <br>&nbsp;&nbsp;});
+                <br>});
+            </div>
+            <br><br>
+            Let's see these two in action:
+            <br><br>
+            Firstly sendTags:
+            <br>
+            Key:<input type="text" id="key"/> 
+            <br>
+            value:<input type="text" id="value"/> 
+            <br>
+            <button onclick="userSendTag();">Submit</button>
+            <br><br>
+            The data tag you submitted was: <span id="sendTagResult" style="font-weight:600;"></span>
         </div>
     </div>
     <script>
+    var submitted_key = "";
     OneSignal = parent.OneSignal;
+
+    function userSendTag(){
+        submitted_key = document.getElementById("key").value;
+        var submitted_value = document.getElementById("value").value;
+        OneSignal.push(function() {
+            OneSignal.sendTag(submitted_key, submitted_value, function(tagsSent) {
+                document.getElementById("sendTagResult").innerHTML = submitted_key + " : " + submitted_value;
+            });
+        });
+    }
+
     OneSignal.push(function() {
         OneSignal.getUserId(function(userId) {
             if(userId){
