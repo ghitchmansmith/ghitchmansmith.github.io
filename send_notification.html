@@ -8,14 +8,15 @@
         <div id="article_body">
             <table style="color:white;">
                 <tr>
-                    <td>Title:</td><td><input type="text" id="message_title" style="color:black;"></td>
+                    <td>Title:</td><td><input type="text" id="message_title" style="color:black;width:100%;"></td>
                 </tr>
                 <tr>
-                    <td>Message:</td><td><input type="text" id="message" style="color:black;"></td>
+                    <td>Message:</td><td><input type="text" id="message" style="color:black;width:100%;"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;"><button onclick="sendNotification();">Send Notification</button></td>
                 </tr>
             </table>
-            <button onclick="sendNotification();">Send Notification</button>
-
         </div>   
     </div>
     <script>
