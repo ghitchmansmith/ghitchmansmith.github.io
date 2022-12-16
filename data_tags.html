@@ -90,10 +90,12 @@
             <br>
             Using this method we can see that your current data tags are: 
             <div class="code_box" id="current_data_tags"></div>
+            <button onclick="getUsersTags();">Refresh</button>
         </div>
     </div>
     <script>
     OneSignal = parent.OneSignal;
+    getUsersTags();
 
     function getUsersTags(){
         OneSignal.push(function() {
