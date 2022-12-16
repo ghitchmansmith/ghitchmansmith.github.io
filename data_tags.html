@@ -8,13 +8,13 @@
         <div id="article_body">
             Data tags are used in OneSignal to segment users and to create customised notifications. A data tag are
             pairs of key:value string data which can be used to identify users and include them in segments within OneSignal. 
-            Let's look at how set datatags using a Web SDL method:
-            <br>
+            Let's look at how set datatags using a Web SDK method:
+            <br><br>
             <div class="subtitle">Setting Data Tags</div>
             Data tags can be set using one of two methods: <b>sendTag</b> or <b>sendTags</b>. The difference between the two,
             as the name suggests, is simply that sendTag only sends a single tag, whereas sendTags can send multiple at once.
             Let's look at sendTag first:
-            <br><br>
+            <br><br><br>
             <div class="code_box">
                 OneSignal.push(function() {
                 <br>&nbsp;&nbsp;OneSignal.sendTag("key", "value", function(tagsSent) {
@@ -27,7 +27,7 @@
             <br>
             <br>
             sendTags, however, takes a JSON object containing a list of key value pairs followed by an optional callback function:
-            <br><br>
+            <br><br><br>
             <div class="code_box">
                 OneSignal.push(function() {
                 <br>&nbsp;&nbsp;OneSignal.sendTags({
