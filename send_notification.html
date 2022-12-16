@@ -8,7 +8,7 @@
         <div id="article_body">
             <table style="color:white;">
                 <tr>
-                    <td>Title:</td><td><input type="text" id="title" style="color:black;"></td>
+                    <td>Title:</td><td><input type="text" id="message_title" style="color:black;"></td>
                 </tr>
                 <tr>
                     <td>Message:</td><td><input type="text" id="message" style="color:black;"></td>
@@ -24,7 +24,7 @@
     function sendNotification(){
         OneSignal.sendSelfNotification(
             /* Title (defaults if unset) */
-            document.getElementById("title").value,
+            document.getElementById("message_title").value,
             /* Message (defaults if unset) */
             document.getElementById("message").value, 
              /* URL (defaults if unset) */
