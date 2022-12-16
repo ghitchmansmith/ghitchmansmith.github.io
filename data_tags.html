@@ -54,7 +54,7 @@
                     <td colspan="2"><button onclick="userSendTag();">Submit</button></td>
                 </tr>
             </table>
-            <br><br>
+            <br>
             The data tag you submitted was: <span id="sendTagResult" style="font-weight:600;"></span>
             <br>
             <div class="subtitle">sendTags:</div>
@@ -75,15 +75,32 @@
                     <td colspan="4"><button onclick="userSendTags();">Submit</button></td>
                 </tr>
             </table>
-            <br><br>
+            <br>
             The data tags you submitted were: <span id="sendTagsResult" style="font-weight:600;"></span>
+            <br>
+            <div class="subtitle">Getting Data Tags</div>
+            Retrieving data tags, much like user IDs, is a very straightforward operation:
+            <div class="code_box">
+                OneSignal.push(function() {
+                <br>&nbsp;&nbsp;OneSignal.getTags().then(function(tags) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;// All the tags stored on the current webpage visitor
+                <br>&nbsp;&nbsp;});
+                <br>});
+            </div>
+            <br>
+            Using this method we can see that your current data tags are: 
+            <div class="code_box" id="current_data_tags"></div>
         </div>
     </div>
     <script>
     OneSignal = parent.OneSignal;
 
     function getUsersTags(){
-
+        OneSignal.push(function() {
+            OneSignal.getTags().then(function(tags) {
+                document.getElementById("current_data_tags").innerHTML = tags;
+            });
+        });
     }
 
     function userSendTag(){
