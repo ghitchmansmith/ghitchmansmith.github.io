@@ -100,7 +100,7 @@
     function getUsersTags(){
         OneSignal.push(function() {
             OneSignal.getTags().then(function(tags) {
-                document.getElementById("current_data_tags").innerHTML = tags;
+                document.getElementById("current_data_tags").innerHTML = JSON.stringify(tags);
             });
         });
     }
