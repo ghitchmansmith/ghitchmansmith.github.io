@@ -6,6 +6,14 @@
     <div id="main">
         <div id="title">Sending Notifications</div>
         <div id="article_body">
+            <table style="color:white;">
+                <tr>
+                    <td>Title:</td><td><input type="text" id="title"></td>
+                </tr>
+                <tr>
+                    <td>Message:</td><td><input type="text" id="message"></td>
+                </tr>
+            </table>
             <button onclick="sendNotification();">Send Notification</button>
 
         </div>   
@@ -16,9 +24,9 @@
     function sendNotification(){
         OneSignal.sendSelfNotification(
             /* Title (defaults if unset) */
-            "OneSignal Web Push Notification",
+            document.getElementById("title").value,
             /* Message (defaults if unset) */
-            "Action buttons increase the ways your users can interact with your notification.", 
+            document.getElementById("message").value, 
              /* URL (defaults if unset) */
             'https://example.com/?_osp=do_not_open',
             /* Icon */
