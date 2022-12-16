@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
+</head>
+<body>
+    <div id="main">
+        <div id="title">Data Tags</div>
+        <div id="article_body">
+            Data tags are used in OneSignal to segment users and to create customised notifications. A data tag are
+            pairs of key:value string data which can be used to identify users and include them in segments within OneSignal. 
+            Let's look at how set datatags using a Web SDL method:
+            <br>
+            <div class="subtitle">Setting Data Tags</div>
+            Data tags can be set using one of two methods: <b>sendTag</b> or <b>sendTags</b>. The difference between the two,
+            as the name suggests, is simply that sendTag only sends a single tag, whereas sendTags can send multiple at once.
+            Let's look at sendTag first:
+            <div class="code_box">
+                OneSignal.push(function() {
+                <br>&nbsp;&nbsp;OneSignal.sendTag("key", "value", function(tagsSent) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending
+                <br>&nbsp;&nbsp;});
+                <br>);
+            </div>
+        </div>
+    </div>
+    <script>
+    OneSignal = parent.OneSignal;
+    OneSignal.push(function() {
+        OneSignal.getUserId(function(userId) {
+            if(userId){
+                document.getElementById("player_id").innerHTML = userId;
+            }  
+        });
+    });
+
+    function getExUserId(){
+        OneSignal.push(function() {
+            OneSignal.getExternalUserId().then(function(externalUserId){
+                if(externalUserId){
+                    document.getElementById("ex_user_id").innerHTML = externalUserId;
+                } else {
+                    document.getElementById("ex_user_id").innerHTML = "No External User ID set.";
+                }
+            });
+        });
+    }
+
+    getExUserId();
+
+    function setExUserId(){
+        let exUserId = document.getElementById("id_input").value;
+        OneSignal.push(function() {
+            OneSignal.setExternalUserId(exUserId);
+        });
+        getExUserId();
+    }
+
+    function removeId(){
+        OneSignal.push(function() {
+            OneSignal.removeExternalUserId();
+        });
+        getExUserId();
+    }
+    </script>
+</body>
