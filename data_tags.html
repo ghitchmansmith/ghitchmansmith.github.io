@@ -41,7 +41,7 @@
             <br><br>
             Let's see these two in action:
             <br>
-            <div class="subtitle">sendTags:</div>
+            <div class="subtitle">sendTag:</div>
             <br>
             <table style="color:white;">
                 <tr>
@@ -56,14 +56,38 @@
             </table>
             <br><br>
             The data tag you submitted was: <span id="sendTagResult" style="font-weight:600;"></span>
+            <br>
+            <div class="subtitle">sendTags:</div>
+            <br>
+            <table style="color:white;">
+                <tr>
+                    <td>Key:</td><td><input type="text" id="key1"/></td>
+                    <td>Value:</td><td><input type="text" id="value1"/></td>
+                </tr>
+                <tr>
+                    <td>Key:</td><td><input type="text" id="key2"/></td>
+                    <td>Value:</td><td><input type="text" id="value2"/></td>
+                </tr>
+                <tr>
+                    <td>Key:</td><td><input type="text" id="key3"/></td>
+                    <td>Value:</td><td><input type="text" id="value3"/></td>
+                </tr>
+                    <td colspan="4"><button onclick="userSendTag();">Submit</button></td>
+                </tr>
+            </table>
+            <br><br>
+            The data tags you submitted were: <span id="sendTagsResult" style="font-weight:600;"></span>
         </div>
     </div>
     <script>
-    var submitted_key = "";
     OneSignal = parent.OneSignal;
 
+    function getUsersTags(){
+
+    }
+
     function userSendTag(){
-        submitted_key = document.getElementById("key").value;
+        var submitted_key = document.getElementById("key").value;
         var submitted_value = document.getElementById("value").value;
         OneSignal.push(function() {
             OneSignal.sendTag(submitted_key, submitted_value, function(tagsSent) {
@@ -72,41 +96,19 @@
         });
     }
 
-    OneSignal.push(function() {
-        OneSignal.getUserId(function(userId) {
-            if(userId){
-                document.getElementById("player_id").innerHTML = userId;
-            }  
-        });
-    });
-
-    function getExUserId(){
+    function userSendTags(){
+        var key1 = document.getElementById("key1").value;
+        var value1 = document.getElementById("value1").value;
+        var key2 = document.getElementById("key2").value;
+        var value2 = document.getElementById("value2").value;        
+        var key3 = document.getElementById("key3").value;
+        var value3 = document.getElementById("value3").value;
         OneSignal.push(function() {
-            OneSignal.getExternalUserId().then(function(externalUserId){
-                if(externalUserId){
-                    document.getElementById("ex_user_id").innerHTML = externalUserId;
-                } else {
-                    document.getElementById("ex_user_id").innerHTML = "No External User ID set.";
-                }
+            OneSignal.sendTags({key1:value1,key2:value2,key3:value3}, function(tagsSent) {
+                document.getElementById("sendTagsResult").innerHTML = key1 + " : " + value1 + "<br>" +  key2 + " : " + value2 + "<br>" +  key3 + " : " + value3;
             });
         });
     }
 
-    getExUserId();
-
-    function setExUserId(){
-        let exUserId = document.getElementById("id_input").value;
-        OneSignal.push(function() {
-            OneSignal.setExternalUserId(exUserId);
-        });
-        getExUserId();
-    }
-
-    function removeId(){
-        OneSignal.push(function() {
-            OneSignal.removeExternalUserId();
-        });
-        getExUserId();
-    }
     </script>
 </body>
