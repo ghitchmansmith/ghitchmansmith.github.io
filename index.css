@@ -126,14 +126,14 @@ nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder {
 }
 
 nav .menu-item:nth-of-type(1):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(-9em + -1px);
+    left: calc(-1.5em + -1px);
 }
 nav .menu-item:nth-of-type(2):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(-3em + -1px);
+    left: calc(-1.5em + -1px);
     height: 18.75em;
 }
 nav .menu-item:nth-of-type(3):hover ~ #sub-menu-container #sub-menu-holder {
-    left: calc(15em + 1px);
+    left: calc(18em + 1px);
     height: 24.5em;
 }
 
