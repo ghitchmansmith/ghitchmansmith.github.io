@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
+</head>
+<body>
+    <div id="main">
+        <div id="title">Subscriptions</div>
+        <div id="article_body">
+            
+            <button onclick="OneSignal.setSubscription(false);">Unsubscribe</button> 
+            <button onclick="OneSignal.setSubscription(true);">Subscribe</button>
+            <button onclick="getSubscription();">Get Current Status</button>
+
+        </div>   
+    </div>
+    <script>
+    OneSignal = parent.OneSignal;
+
+    function getSubscription(){
+        if(OneSignal.isPushNotificationsEnabled()){
+            alert("Subscribed");
+        } else {
+            alert("Unsubscribed");
+        }
+    }
+
+
+    </script>
+</body>
