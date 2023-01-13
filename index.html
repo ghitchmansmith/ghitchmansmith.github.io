@@ -14,30 +14,82 @@
                     enable: true,
                 },
 
-                // Your other init options here
-                promptOptions: {
-                    slidedown: {
-                        prompts: [
-                            {
-                                type: "push", // current types are "push" & "category"
-                                autoPrompt: true,
-                                text: {
-                                    /* limited to 90 characters */
-                                    actionMessage: "We'd like to show you notifications for the latest news and updates.",
-                                  /* acceptButton limited to 15 characters */
-                                  acceptButton: "Allow",
-                                  /* cancelButton limited to 15 characters */
-                                  cancelButton: "Cancel"
-                                },
-                                delay: {
-                                  pageViews: 1,
-                                timeDelay: 5
-                                }
-                            }
-                        ]
-                      }
-                }
-                // END promptOptions, continue with other init options
+    // Your other init options here
+    promptOptions: {
+      slidedown: {
+        prompts: [
+          {
+            type: "category",
+            autoPrompt: true,
+            text: {
+              actionMessage: "We'd like to show you notifications for the latest news and updates.",
+              acceptButton: "Allow",
+              cancelButton: "Cancel",
+
+              /* CATEGORY SLIDEDOWN SPECIFIC TEXT */
+              negativeUpdateButton:"Cancel",
+              positiveUpdateButton:"Save Preferences",
+              updateMessage: "Update your push notification subscription preferences.",
+            },
+            delay: {
+              pageViews: 1,
+              timeDelay: 20
+            },
+            categories: [
+              {
+                tag: "1",
+                label: "1"
+              },
+              {
+                tag: "2",
+                label: "2 News"
+              },
+              {
+                tag: "3",
+                label: "3 News",
+              },
+              {
+                tag: "4",
+                label: "4"
+              },
+            {
+                tag: "5",
+                label: "5"
+              },
+            {
+                tag: "6",
+                label: "6"
+              },
+            {
+                tag: "7",
+                label: "7"
+              },
+            {
+                tag: "8",
+                label: "8"
+              },
+            {
+                tag: "9",
+                label: "9"
+              },
+            {
+                tag: "10",
+                label: "10"
+              },
+            {
+                tag: "11",
+                label: "11"
+              },
+            {
+                tag: "12",
+                label: "12"
+              },
+            ]
+          }
+        ]
+      }
+    }
+    // END promptOptions, continue with other init options
             });
         OneSignal.push(function() {
         /* These examples are all valid */
