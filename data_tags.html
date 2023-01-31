@@ -1,99 +1,238 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
-</head>
-<body>
-    <div id="main">
-        <div id="title">Data Tags</div>
-        <div id="article_body">
+
+ <html>
+
+ <head>
+    
+ <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
+
+ </head>
+
+ <body>
+    
+ <div id="main">
+        
+ <div id="title">Data Tags
+ </div>
+        
+ <div id="article_body">
             Data tags are used in OneSignal to segment users and to create customised notifications. A data tag are
             pairs of key:value string data which can be used to identify users and include them in segments within OneSignal. 
             Let's look at how set datatags using a Web SDK method:
-            <br><br>
-            <div class="subtitle">Setting Data Tags</div>
-            Data tags can be set using one of two methods: <b>sendTag</b> or <b>sendTags</b>. The difference between the two,
+            
+ <br>
+ <br>
+            
+ <div class="subtitle">Setting Data Tags
+ </div>
+            Data tags can be set using one of two methods: 
+ <b>sendTag
+ </b> or 
+ <b>sendTags
+ </b>. The difference between the two,
             as the name suggests, is simply that sendTag only sends a single tag, whereas sendTags can send multiple at once.
             Let's look at sendTag first:
-            <br><br><br>
-            <div class="code_box">
+            
+ <br>
+ <br>
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                <br>&nbsp;&nbsp;OneSignal.sendTag("key", "value", function(tagsSent) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending
-                <br>&nbsp;&nbsp;});
-                <br>);
-            </div>
-            <br>
+                
+ <br>&nbsp;&nbsp;OneSignal.sendTag("key", "value", function(tagsSent) {
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending
+                
+ <br>&nbsp;&nbsp;});
+                
+ <br>);
+            
+ </div>
+            
+ <br>
             sendTag simply takes the key and value as seperate parameters, followed by an optional callback function. 
-            <br>
-            <br>
+            
+ <br>
+            
+ <br>
             sendTags, however, takes a JSON object containing a list of key value pairs followed by an optional callback function:
-            <br><br><br>
-            <div class="code_box">
+            
+ <br>
+ <br>
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                <br>&nbsp;&nbsp;OneSignal.sendTags({
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;key: 'value',
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;key2: 'value2',
-                <br>&nbsp;&nbsp;}).then(function(tagsSent) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending    
-                <br>&nbsp;&nbsp;});
-                <br>});
-            </div>
-            <br><br>
+                
+ <br>&nbsp;&nbsp;OneSignal.sendTags({
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;key: 'value',
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;key2: 'value2',
+                
+ <br>&nbsp;&nbsp;}).then(function(tagsSent) {
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;// Callback called when tags have finished sending    
+                
+ <br>&nbsp;&nbsp;});
+                
+ <br>});
+            
+ </div>
+            
+ <br>
+ <br>
             Let's see these two in action:
-            <br>
-            <div class="subtitle">sendTag:</div>
-            <br>
-            <table style="color:white;">
-                <tr>
-                    <td>Key:</td><td><input type="text" id="key"/></td>
-                </tr>
-                <tr>
-                    <td>Value:</td><td><input type="text" id="value"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button onclick="userSendTag();">Submit</button></td>
-                </tr>
-            </table>
-            <br>
-            The data tag you submitted was: <span id="sendTagResult" style="font-weight:600;"></span>
-            <br>
-            <div class="subtitle">sendTags:</div>
-            <br>
-            <table style="color:white;">
-                <tr>
-                    <td>Key:</td><td><input type="text" id="key1"/></td>
-                    <td>Value:</td><td><input type="text" id="value1"/></td>
-                </tr>
-                <tr>
-                    <td>Key:</td><td><input type="text" id="key2"/></td>
-                    <td>Value:</td><td><input type="text" id="value2"/></td>
-                </tr>
-                <tr>
-                    <td>Key:</td><td><input type="text" id="key3"/></td>
-                    <td>Value:</td><td><input type="text" id="value3"/></td>
-                </tr>
-                    <td colspan="4"><button onclick="userSendTags();">Submit</button></td>
-                </tr>
-            </table>
-            <br>
-            The data tags you submitted were: <span id="sendTagsResult" style="font-weight:600;"></span>
-            <br>
-            <div class="subtitle">Getting Data Tags</div>
+            
+ <br>
+            
+ <div class="subtitle">sendTag:
+ </div>
+            
+ <br>
+            
+ <table style="color:white;">
+                
+ <tr>
+                    
+ <td>Key:
+ </td>
+ <td>
+ <input type="text" id="key"/>
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td>Value:
+ </td>
+ <td>
+ <input type="text" id="value"/>
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td colspan="2">
+ <button onclick="userSendTag();">Submit
+ </button>
+ </td>
+                
+ </tr>
+            
+ </table>
+            
+ <br>
+            The data tag you submitted was: 
+ <span id="sendTagResult" style="font-weight:600;">
+ </span>
+            
+ <br>
+            
+ <div class="subtitle">sendTags:
+ </div>
+            
+ <br>
+            
+ <table style="color:white;">
+                
+ <tr>
+                    
+ <td>Key:
+ </td>
+ <td>
+ <input type="text" id="key1"/>
+ </td>
+                    
+ <td>Value:
+ </td>
+ <td>
+ <input type="text" id="value1"/>
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td>Key:
+ </td>
+ <td>
+ <input type="text" id="key2"/>
+ </td>
+                    
+ <td>Value:
+ </td>
+ <td>
+ <input type="text" id="value2"/>
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td>Key:
+ </td>
+ <td>
+ <input type="text" id="key3"/>
+ </td>
+                    
+ <td>Value:
+ </td>
+ <td>
+ <input type="text" id="value3"/>
+ </td>
+                
+ </tr>
+                    
+ <td colspan="4">
+ <button onclick="userSendTags();">Submit
+ </button>
+ </td>
+                
+ </tr>
+            
+ </table>
+            
+ <br>
+            The data tags you submitted were: 
+ <span id="sendTagsResult" style="font-weight:600;">
+ </span>
+            
+ <br>
+            
+ <div class="subtitle">Getting Data Tags
+ </div>
             Retrieving data tags, much like user IDs, is a very straightforward operation:
-            <div class="code_box">
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                <br>&nbsp;&nbsp;OneSignal.getTags().then(function(tags) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;// All the tags stored on the current webpage visitor
-                <br>&nbsp;&nbsp;});
-                <br>});
-            </div>
-            <br>
+                
+ <br>&nbsp;&nbsp;OneSignal.getTags().then(function(tags) {
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;// All the tags stored on the current webpage visitor
+                
+ <br>&nbsp;&nbsp;});
+                
+ <br>});
+            
+ </div>
+            
+ <br>
             Using this method we can see that your current data tags are: 
-            <div class="code_box" id="current_data_tags"></div>
-            <button onclick="getUsersTags();">Refresh</button>
-        </div>
-    </div>
-    <script>
+            
+ <div class="code_box" id="current_data_tags">
+ </div>
+            
+ <button onclick="getUsersTags();">Refresh
+ </button>
+        
+ </div>
+    
+ </div>
+    
+ <script>
     OneSignal = parent.OneSignal;
     getUsersTags();
 
@@ -127,10 +266,15 @@
         var tagObject = JSON.parse(tagObjectString);
         OneSignal.push(function() {
             OneSignal.sendTags(tagObject, function(tagsSent) {
-                document.getElementById("sendTagsResult").innerHTML = "<br>" + key1 + " : " + value1 + "<br>" +  key2 + " : " + value2 + "<br>" +  key3 + " : " + value3;
+                document.getElementById("sendTagsResult").innerHTML = "
+ <br>" + key1 + " : " + value1 + "
+ <br>" +  key2 + " : " + value2 + "
+ <br>" +  key3 + " : " + value3;
             });
         });
     }
 
-    </script>
-</body>
+    
+ </script>
+
+ </body>

@@ -1,26 +1,60 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
-</head>
-<body>
-    <div id="main">
-        <div id="title">Sending Notifications</div>
-        <div id="article_body">
+
+ <html>
+
+ <head>
+    
+ <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
+
+ </head>
+
+ <body>
+    
+ <div id="main">
+        
+ <div id="title">Sending Notifications
+ </div>
+        
+ <div id="article_body">
             
-            <table style="color:white;">
-                <tr>
-                    <td>Title:</td><td><input type="text" id="message_title" style="color:black;width:300px;"></td>
-                </tr>
-                <tr>
-                    <td>Message:</td><td><input type="text" id="message" style="color:black;width:300px;"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align:center;"><button onclick="sendNotification();">Send Notification</button></td>
-                </tr>
-            </table>
-        </div>   
-    </div>
-    <script>
+            
+ <table style="color:white;">
+                
+ <tr>
+                    
+ <td>Title:
+ </td>
+ <td>
+ <input type="text" id="message_title" style="color:black;width:300px;">
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td>Message:
+ </td>
+ <td>
+ <input type="text" id="message" style="color:black;width:300px;">
+ </td>
+                
+ </tr>
+                
+ <tr>
+                    
+ <td colspan="2" style="text-align:center;">
+ <button onclick="sendNotification();">Send Notification
+ </button>
+ </td>
+                
+ </tr>
+            
+ </table>
+        
+ </div>   
+    
+ </div>
+    
+ <script>
     OneSignal = parent.OneSignal;
 
     function sendNotification(){
@@ -56,5 +90,7 @@
         );
     }
 
-    </script>
-</body>
+    
+ </script>
+
+ </body>

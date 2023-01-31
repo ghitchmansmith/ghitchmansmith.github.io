@@ -1,9 +1,15 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="name.css" media="screen" />
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>window.OneSignal = window.OneSignal || [];
+ <html>
+
+ <head>
+    
+ <link rel="stylesheet" type="text/css" href="name.css" media="screen" />
+
+    
+ <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="">
+ </script>
+    
+ <script>window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
             OneSignal.init({
                 appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
@@ -44,17 +50,37 @@
             });
         });
         });
-    </script>
-    <script src="index.js"></script>
-</head>
-  <body>
+    
+ </script>
+    
+ <script src="index.js">
+ </script>
 
-    <div id="main_div">
-        First Name:    <input type="text" id="first_name" name="first_name"><br>
-        Last Name:     <input type="text" id="last_name" name="last_name"><br>
-        <!-- Email Address: <input type="text" id="email" name="email"><br>-->
-        <button type="submit" id="submit" value="Submit" onclick="sendNameToOS()">Submit</button>
-    </div>
-  </body>
-  <script>loadSubmissionResults();</script>
-</html>
+ </head>
+  
+ <body>
+
+    
+ <div id="main_div">
+        First Name:    
+ <input type="text" id="first_name" name="first_name">
+ <br>
+        Last Name:     
+ <input type="text" id="last_name" name="last_name">
+ <br>
+        
+ <!-- Email Address: 
+ <input type="text" id="email" name="email">
+ <br>-->
+        
+ <button type="submit" id="submit" value="Submit" onclick="sendNameToOS()">Submit
+ </button>
+    
+ </div>
+  
+ </body>
+  
+ <script>loadSubmissionResults();
+ </script>
+
+ </html>

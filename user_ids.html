@@ -1,74 +1,142 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
-</head>
-<body>
-    <div id="main">
-        <div id="title">Getting User IDs</div>
-        <div id="article_body">
+
+ <html>
+
+ <head>
+    
+ <link rel="stylesheet" type="text/css" href="article.css" media="screen" />
+
+ </head>
+
+ <body>
+    
+ <div id="main">
+        
+ <div id="title">Getting User IDs
+ </div>
+        
+ <div id="article_body">
             Within OneSignal there are two types of User IDs: 
-            <div class="subtitle">Player IDs</div>
+            
+ <div class="subtitle">Player IDs
+ </div>
             Player Ids are created when a user registers and will remain the same for as long as the user is subscribed to notifications. 
             When a user resets their notification settings and clears their borwser's site data for your site, they will need to re-register 
             to recieve notifications. Doing so will create a new player ID, but will not delete the old player ID (which will now be set to 
             "Not Subscribed") within the Audience -> Users page of the OneSignal platform. 
-            <br><br> 
+            
+ <br>
+ <br> 
             To retrieve the user's player ID, you will need to run the following command:
-            <br><br>
-            <div class="code_box">
+            
+ <br>
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                <br>&nbsp;&nbsp;OneSignal.getUserId(function(userId) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("OneSignal User ID:", userId);
-                <br>&nbsp;&nbsp;});
-                <br>});
-            </div>
-            <br>
+                
+ <br>&nbsp;&nbsp;OneSignal.getUserId(function(userId) {
+                
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("OneSignal User ID:", userId);
+                
+ <br>&nbsp;&nbsp;});
+                
+ <br>});
+            
+ </div>
+            
+ <br>
             If you have subscribed, your current player ID will be displayed in the box below:
-            <br>
-            <div class="code_box" id="player_id"></div>
-            <br>
-            <div class="subtitle">External User IDs</div>
+            
+ <br>
+            
+ <div class="code_box" id="player_id">
+ </div>
+            
+ <br>
+            
+ <div class="subtitle">External User IDs
+ </div>
             External user Ids are designed to connect multiple devices under one ID and can be set by you to any value of your choice. 
             To set an External User ID, you will need to use the setExternalUserId method: 
-            <br>
-            <div class="code_box">
+            
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                    <br>&nbsp;&nbsp;OneSignal.setExternalUserId(externalUserId);
-                <br>});
-            </div>
-            <br>
+                    
+ <br>&nbsp;&nbsp;OneSignal.setExternalUserId(externalUserId);
+                
+ <br>});
+            
+ </div>
+            
+ <br>
             To retrieve the users current External User ID, use the getExternalUserId function as below: 
-            <br>
-            <div class="code_box">
+            
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                <br>&nbsp;&nbsp;OneSignal.getExternalUserId().then(function(externalUserId){
-                <br>&nbsp;&nbsp;});
-                <br>});
-            </div>
-            <br>
+                
+ <br>&nbsp;&nbsp;OneSignal.getExternalUserId().then(function(externalUserId){
+                
+ <br>&nbsp;&nbsp;});
+                
+ <br>});
+            
+ </div>
+            
+ <br>
             External User IDs, once set, can also be removed: 
-            <br>
-            <div class="code_box">
+            
+ <br>
+            
+ <div class="code_box">
                 OneSignal.push(function() {
-                    <br>&nbsp;&nbsp;OneSignal.removeExternalUserId();
-                <br>});
-            <br>
-            </div>
-            <br>
+                    
+ <br>&nbsp;&nbsp;OneSignal.removeExternalUserId();
+                
+ <br>});
+            
+ <br>
+            
+ </div>
+            
+ <br>
             You can test each of these methods below:
-            <br><br>
-            <div style="width:80%;margin:auto;border:2px solid white;border-radius:10px;padding:10px;">
-                Your current External User ID is : <span style="font-weight:600;" id="ex_user_id"></span>
-                <br><br>
+            
+ <br>
+ <br>
+            
+ <div style="width:80%;margin:auto;border:2px solid white;border-radius:10px;padding:10px;">
+                Your current External User ID is : 
+ <span style="font-weight:600;" id="ex_user_id">
+ </span>
+                
+ <br>
+ <br>
                 Create or update your External User ID: 
-                <input type="text" id="id_input"/>&nbsp;&nbsp;<button onclick="setExUserId();">Submit</button>
-                <br><br>
-                <span style="width:100%;text-align:center;"><button style="margin:auto;width:200px;" onclick="removeId();">Remove External User Id</button></span>
-            </div>
-        </div>
+                
+ <input type="text" id="id_input"/>&nbsp;&nbsp;
+ <button onclick="setExUserId();">Submit
+ </button>
+                
+ <br>
+ <br>
+                
+ <span style="width:100%;text-align:center;">
+ <button style="margin:auto;width:200px;" onclick="removeId();">Remove External User Id
+ </button>
+ </span>
+            
+ </div>
+        
+ </div>
 
-    </div>
-    <script>
+    
+ </div>
+    
+ <script>
     OneSignal = parent.OneSignal;
     OneSignal.push(function() {
         OneSignal.getUserId(function(userId) {
@@ -106,5 +174,7 @@
         });
         getExUserId();
     }
-    </script>
-</body>
+    
+ </script>
+
+ </body>
