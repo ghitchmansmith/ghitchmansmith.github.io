@@ -9,6 +9,17 @@
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
 
+<script>
+  var coordinates = {
+    "Polzeath":["50.57573363873523",-4.917967669462457]
+  };
+
+  function refresh_surf_report(){
+    var location = document.getElementsById().value;
+    alert(location + " " + coordinates.location[0]+","+coordinates.location[1]);
+  };
+</script>
+
 
 <!DOCTYPE html>
 
@@ -20,7 +31,7 @@
   
  <body style="margin:0px;">
 
-  <select onchange="refesh_surf_report();">
+  <select id="location" onchange="refesh_surf_report();">
     <option>Polzeath</option>
     <option>Summerleaze</option>
     <option>Widemouth</option>
