@@ -32,8 +32,8 @@
     };
 
     const response = fetch("https://api.stormglass.io/v2/weather/point?lat="+coordinates[location_index][1]+"&lng="+coordinates[location_index][2]+"&params=swellHeight,swellPeriod,waveHeight,airTemperature,cloudCover,windSpeed,waveDirection,waterTemperature", requestOptions);
-
-    alert(JSON.stringify(response));
+    const jsonData = response.json();
+    alert(JSON.stringify(jsonData));
   }
 </script>
 
