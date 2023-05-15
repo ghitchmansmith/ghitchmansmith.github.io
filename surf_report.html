@@ -14,13 +14,11 @@
 </style>
 
 <script>
-  var coordinates = {
-    "Polzeath":["50.57573363873523",-4.917967669462457]
-  };
+  var coordinates = [["Polzeath","50.57573363873523",-4.917967669462457]];
 
   function refresh_surf_report(){
-    var location = document.getElementById("location").value;
-    alert(location + " " + coordinates.location[0]+","+coordinates.location[1]);
+    var location_index = document.getElementById("location").value;
+    alert(coordinates[location_index][0] + " " + coordinates[location_index][1]+","+coordinates[location_index][2]);
   };
 </script>
 
@@ -36,11 +34,11 @@
  <body style="margin:0px;">
 
   <select id="location" onchange="refresh_surf_report();">
-    <option>Polzeath</option>
-    <option>Summerleaze</option>
-    <option>Widemouth</option>
-    <option>Crackington</option>
-    <option>Boscastle</option>
+    <option value="0">Polzeath</option>
+    <option value="1">Summerleaze</option>
+    <option value="2">Widemouth</option>
+    <option value="3">Crackington</option>
+    <option value="4">Boscastle</option>
   </select>  
  </body>
 
