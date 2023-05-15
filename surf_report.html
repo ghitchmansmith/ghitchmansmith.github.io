@@ -3,10 +3,10 @@
 
 <head>
     
-<title>OneSignal WebSDK Demo
+<title>Surf Report Test
 </title>
 
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/images/surf_icon.png">
 <style>
   body{
     background-image: url("images/surf_background.jpg");
@@ -19,7 +19,23 @@
   function refresh_surf_report(){
     var location_index = document.getElementById("location").value;
     alert(coordinates[location_index][0] + " " + coordinates[location_index][1]+","+coordinates[location_index][2]);
-  };
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "af7006f0-e9ce-11ed-86b2-0242ac130002-af70075e-e9ce-11ed-86b2-0242ac130002");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    fetch("https://api.stormglass.io/v2/weather/point?lat="+coordinates[location_index][1]+"&lng="+coordinates[location_index][2]+"&params=swellHeight,swellPeriod,waveHeight,airTemperature,cloudCover,windSpeed,waveDirection,waterTemperature", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
+    alert(JSON.stringify(response));
+  }
 </script>
 
 
