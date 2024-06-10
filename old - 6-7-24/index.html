@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+
+ <head>
+    
+ <title>OneSignal WebSDK Demo
+ </title>
+  <!---  
+ <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+ <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+
+  -->   
+ <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="">
+ </script>
+    
+ <script>window.OneSignal = window.OneSignal || [];
+
+        var welcome_message = "Welcome!";
+
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
+                safari_web_id: "web.onesignal.auto.428d294a-5ce2-44bb-bee0-dec3149a5564",
+                notifyButton: {
+                    enable: true,
+                },
+
+
+    // Your other init options here
+    promptOptions: {
+      slidedown: {
+        prompts: [
+          {
+            type: "push", // current types are "push" & "category"
+            autoPrompt: true,
+            text: {
+              /* limited to 90 characters */
+              actionMessage: "<a href='https://google.com'>Click me</a>",
+              /* acceptButton limited to 15 characters */
+              acceptButton: "Allow",
+              /* cancelButton limited to 15 characters */
+              cancelButton: "Cancel"
+            },
+            delay: {
+              pageViews: 1,
+              timeDelay: 20
+            }
+          }
+        ]
+      }
+    }
+    // END promptOptions, continue with other init options
+
+        });
+        OneSignal.push(function() {
+        /* These examples are all valid */
+            OneSignal.getUserId(function(userId) {
+                console.log("OneSignal User ID:", userId);
+            });
+        });
+        });
+    
+ </script>
+ <!---
+ <script src="index.js">
+ </script>
+-->
+ </head>
+  
+ <body style="margin:0px;">
+
+<!---
+    
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+ <nav id="menu">
+        
+ <div class="menu-item">
+            
+ <div class="home_menu" onclick="changePage('home.html');">
+                
+ <a href="#">Home
+ </a>
+            
+ </div>
+            
+        
+ </div>
+        
+ <div class="menu-item highlight">
+            
+ <div class="menu-text">
+                
+ <a href="#">Web SDK
+ </a>
+            
+ </div>
+            
+ <div class="sub-menu double">
+                
+ <div class="icon-box gb a">
+                    
+ <div class="text" onclick="changePage('user_ids.html');">
+                        
+ <div class="title" >User IDs
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Learn how to retrieve player IDs and external user IDs
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box gb b" onclick="changePage('data_tags.html');">
+                    
+ <div class="text">
+                        
+ <div class="title" >Data Tags
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Learn how to set and retrieve data tags to be used to create segments and personalise notifications
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box gb c" onclick="changePage('send_notification.html');">
+                    
+ <div class="text">
+                        
+ <div class="title"  >Create Notifications
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Learn how to create notifications for the current user
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box gb d" onclick="changePage('subscriptions.html');">
+                    
+ <div class="text">
+                        
+ <div class="title"  >Update Subscriptions
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Learn how to set a soft subscription preference for the current user
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box gb e" onclick="changePage('receive_notifications.html');">
+                    
+ <div class="text">
+                        
+ <div class="title" >Recieve Notifications
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Learn how to recognise and respond to interactions with your notifications
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="sub-menu-holder">
+ </div>
+            
+ </div>
+        
+ </div>
+        
+ <div class="menu-item">
+            
+ <div class="menu-text">
+                
+ <a href="#">Documentation
+ </a>
+            
+ </div>
+            
+ <div class="sub-menu">
+                
+ <div class="icon-box">
+                    
+ <div class="icon">
+ <i class="far fa-satellite">
+ </i>
+ </div>
+                    
+ <div class="text">
+                        
+ <div class="title">Forum 
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Join our passionate community.
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box">
+                    
+ <div class="icon">
+ <i class="fab fa-twitter-square">
+ </i>
+ </div>
+                    
+ <div class="text">
+                        
+ <div class="title">Twitter 
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">Follow us on twitter.
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="icon-box">
+                    
+ <div class="icon">
+ <i class="fab fa-twitch">
+ </i>
+ </div>
+                    
+ <div class="text">
+                        
+ <div class="title">Live Stream 
+ <i class="far fa-arrow-right">
+ </i>
+ </div>
+                        
+ <div class="sub-text">We stream content every day.
+ </div>
+                    
+ </div>
+                
+ </div>
+                
+ <div class="sub-menu-holder">
+ </div>
+            
+ </div>
+        
+ </div>
+        
+ <div id="sub-menu-container">
+            
+ <div id="sub-menu-holder">
+                
+ <div id="sub-menu-bottom">
+
+                
+ </div>
+            
+ </div>
+        
+ </div>
+    
+ </nav>
+    
+ <div id="name_div" onclick="changePage('name.html');">
+ </div>
+
+    
+ <iframe id="main_frame" src="home.html" style="height:80%;width:100%;border:none;">
+ </iframe>
+-->
+  Empty test page
+ </body>
+ <!-- 
+ <script>loadSubmissionResults();
+ </script>
+-->
+ </html>

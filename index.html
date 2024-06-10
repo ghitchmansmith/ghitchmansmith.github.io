@@ -1,300 +1,209 @@
-
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Push Notifications - V16 SDK</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
 
- <head>
-    
- <title>OneSignal WebSDK Demo
- </title>
-  <!---  
- <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
- <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+    <!-- Manifest required for Web Push on iOS devices  -->
+    <link rel="manifest" href="manifest.json" />
 
-  -->   
- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="">
- </script>
-    
- <script>window.OneSignal = window.OneSignal || [];
+    <!-- OneSignal Initialisation -->
+    <script
+      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+      defer
+    ></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(function (OneSignal) {
+        OneSignal.init({
+          appId: "1a8f989a-a970-4b8e-be60-6669f8335fbb",
+        });
+      });
+    </script>
 
-        var welcome_message = "Welcome!";
-
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
-                safari_web_id: "web.onesignal.auto.428d294a-5ce2-44bb-bee0-dec3149a5564",
-                notifyButton: {
-                    enable: true,
-                },
-
-
-    // Your other init options here
-    promptOptions: {
-      slidedown: {
-        prompts: [
-          {
-            type: "push", // current types are "push" & "category"
-            autoPrompt: true,
-            text: {
-              /* limited to 90 characters */
-              actionMessage: "<a href='https://google.com'>Click me</a>",
-              /* acceptButton limited to 15 characters */
-              acceptButton: "Allow",
-              /* cancelButton limited to 15 characters */
-              cancelButton: "Cancel"
-            },
-            delay: {
-              pageViews: 1,
-              timeDelay: 20
-            }
-          }
-        ]
+    <style>
+      body {
+        font-family: "Nunito Sans", sans-serif;
       }
-    }
-    // END promptOptions, continue with other init options
 
-        });
-        OneSignal.push(function() {
-        /* These examples are all valid */
-            OneSignal.getUserId(function(userId) {
-                console.log("OneSignal User ID:", userId);
-            });
-        });
-        });
-    
- </script>
- <!---
- <script src="index.js">
- </script>
--->
- </head>
-  
- <body style="margin:0px;">
+      /*** Styles to customise prompt ***/
 
-<!---
-    
- <link rel="preconnect" href="https://fonts.gstatic.com">
-    
- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
- <nav id="menu">
-        
- <div class="menu-item">
-            
- <div class="home_menu" onclick="changePage('home.html');">
-                
- <a href="#">Home
- </a>
-            
- </div>
-            
-        
- </div>
-        
- <div class="menu-item highlight">
-            
- <div class="menu-text">
-                
- <a href="#">Web SDK
- </a>
-            
- </div>
-            
- <div class="sub-menu double">
-                
- <div class="icon-box gb a">
-                    
- <div class="text" onclick="changePage('user_ids.html');">
-                        
- <div class="title" >User IDs
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Learn how to retrieve player IDs and external user IDs
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box gb b" onclick="changePage('data_tags.html');">
-                    
- <div class="text">
-                        
- <div class="title" >Data Tags
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Learn how to set and retrieve data tags to be used to create segments and personalise notifications
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box gb c" onclick="changePage('send_notification.html');">
-                    
- <div class="text">
-                        
- <div class="title"  >Create Notifications
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Learn how to create notifications for the current user
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box gb d" onclick="changePage('subscriptions.html');">
-                    
- <div class="text">
-                        
- <div class="title"  >Update Subscriptions
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Learn how to set a soft subscription preference for the current user
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box gb e" onclick="changePage('receive_notifications.html');">
-                    
- <div class="text">
-                        
- <div class="title" >Recieve Notifications
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Learn how to recognise and respond to interactions with your notifications
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="sub-menu-holder">
- </div>
-            
- </div>
-        
- </div>
-        
- <div class="menu-item">
-            
- <div class="menu-text">
-                
- <a href="#">Documentation
- </a>
-            
- </div>
-            
- <div class="sub-menu">
-                
- <div class="icon-box">
-                    
- <div class="icon">
- <i class="far fa-satellite">
- </i>
- </div>
-                    
- <div class="text">
-                        
- <div class="title">Forum 
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Join our passionate community.
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box">
-                    
- <div class="icon">
- <i class="fab fa-twitter-square">
- </i>
- </div>
-                    
- <div class="text">
-                        
- <div class="title">Twitter 
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">Follow us on twitter.
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="icon-box">
-                    
- <div class="icon">
- <i class="fab fa-twitch">
- </i>
- </div>
-                    
- <div class="text">
-                        
- <div class="title">Live Stream 
- <i class="far fa-arrow-right">
- </i>
- </div>
-                        
- <div class="sub-text">We stream content every day.
- </div>
-                    
- </div>
-                
- </div>
-                
- <div class="sub-menu-holder">
- </div>
-            
- </div>
-        
- </div>
-        
- <div id="sub-menu-container">
-            
- <div id="sub-menu-holder">
-                
- <div id="sub-menu-bottom">
+      .slidedown-body-icon {
+        display: none !important;
+      }
 
-                
- </div>
-            
- </div>
-        
- </div>
-    
- </nav>
-    
- <div id="name_div" onclick="changePage('name.html');">
- </div>
+      .slidedown-body-message {
+        text-align: center !important;
+        padding: 322px 0 20px !important;
+        background-image: url(https://picsum.photos/482/300) !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
+        min-width: 100% !important;
+      }
 
-    
- <iframe id="main_frame" src="home.html" style="height:80%;width:100%;border:none;">
- </iframe>
--->
-  Empty test page
- </body>
- <!-- 
- <script>loadSubmissionResults();
- </script>
--->
- </html>
+      #slidedown-footer {
+        display: flex;
+        align-items: center !important;
+        justify-content: center;
+        flex-direction: row-reverse;
+      }
+    </style>
+  </head>
+
+  <body class="leading-normal tracking-normal text-gray-900 tracking-wider">
+    <div
+      class="h-screen pb-14 bg-right bg-cover"
+      style="background-image: url('bg.svg')"
+    >
+      <!--Nav-->
+      <div class="w-full container mx-auto p-6">
+        <div class="w-full flex items-center justify-between">
+          <a
+            class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            href="#"
+          >
+            <img src="OneSignal-Logo.svg" />
+          </a>
+
+          <div class="flex w-1/2 justify-end content-center">
+            <a
+              class="inline-block text-blue-300 no-underline hover:text-indigo-800 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4"
+              data-tippy-content="@twitter_handle"
+              href="https://twitter.com/onesignal"
+            >
+              <svg
+                class="fill-current h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="inline-block text-blue-300 no-underline hover:text-indigo-800 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4"
+              data-tippy-content="#facebook_id"
+              href="https://www.facebook.com/onesignalapp/"
+            >
+              <svg
+                class="fill-current h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--Main-->
+      <div
+        class="container pt-14 md:pt-28 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center"
+      >
+        <!--Left Col-->
+        <div
+          class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden"
+        >
+          <h1
+            class="my-4 text-3xl font-black md:text-5xl text-grey-950 text-center md:text-left"
+          >
+            Re-engage Customers with Real-Time Web Push Notifications
+          </h1>
+          <p class="text-center md:text-2xl md:text-left">
+            Build stronger, more valuable customer relationships with desktop
+            and browser notifications.
+          </p>
+          <div class="onesignal-customlink-container"></div>
+        </div>
+
+        <!--Right Col-->
+        <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
+          <img class="w-5/6 mx-auto slide-in-bottom" src="devices.svg" />
+        </div>
+
+        <!--Footer-->
+        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">
+          <a class="text-gray-500 no-underline hover:no-underline" href="#"
+            >&copy; OneSignal 2024</a
+          >
+        </div>
+      </div>
+    </div>
+    <script>
+      // Change the Notification Bell icon
+      function editBellIcon() {
+        // Select the SVG element
+        const svgElement = document.querySelector(".onesignal-bell-svg");
+
+        if (svgElement) {
+          // Select the existing <path> element
+          const pathElement = svgElement.querySelector("path.foreground");
+
+          // Remove the <path> element
+          if (pathElement) {
+            pathElement.remove();
+          }
+
+          // Create a new <image> element
+          const imgElement = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "image"
+          );
+
+          // Set the attributes for the new image
+          imgElement.setAttribute(
+            "href",
+            "https://www.svgrepo.com/show/271814/smile.svg"
+          ); // Replace with the actual URL of your image
+          imgElement.setAttribute("x", "0"); // Set the x position of the image
+          imgElement.setAttribute("y", "0"); // Set the y position of the image
+          imgElement.setAttribute("width", "99.7"); // Set the width of the image
+          imgElement.setAttribute("height", "99.7"); // Set the height of the image
+
+          // Append the new image to the SVG
+          svgElement.appendChild(imgElement);
+
+          // Clear the interval once the SVG container is found and modified
+          clearInterval(checkExistence);
+        }
+      }
+
+      // Check for the existence of the SVG container every 500 milliseconds
+      const checkExistence = setInterval(editBellIcon, 500);
+
+    </script>
+  </body>
+</html>
