@@ -36,16 +36,13 @@
     <!-- Manifest required for Web Push on iOS devices  -->
     <link rel="manifest" href="manifest.json" />
 
-    <!-- OneSignal Initialisation -->
-    <script
-      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-      defer
-    ></script>
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(function (OneSignal) {
+      OneSignalDeferred.push(function(OneSignal) {
         OneSignal.init({
-          appId: "1a8f989a-a970-4b8e-be60-6669f8335fbb",
+          appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
         });
       });
     </script>
