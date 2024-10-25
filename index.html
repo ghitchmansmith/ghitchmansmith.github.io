@@ -44,6 +44,9 @@
         OneSignal.init({
           appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
         });
+        if (!OneSignal.Notifications.permission || !OneSignal.User.PushSubscription.optedIn ) {
+          addOutcome("Web Push Rejected");
+        }
       });
     </script>
 
