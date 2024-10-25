@@ -44,10 +44,16 @@
         OneSignal.init({
           appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
         });
-        if (!OneSignal.Notifications.permission || !OneSignal.User.PushSubscription.optedIn ) {
-          addOutcome("Web Push Rejected");
-        }
       });
+      OneSignalDeferred.push(function() {
+        OneSignal.Slidedown.addEventListener('slidedownShown', function (event) {
+          console.log('slidedownShown', { event });
+          if (!OneSignal.Notifications.permission || !OneSignal.User.PushSubscription.optedIn ) {
+          OneSignal.Session.addOutcome("Web Push Rejected");
+          }
+        });
+      });
+
     </script>
 
     <style>
