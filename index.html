@@ -5,23 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Push Notifications - V16 SDK</title>
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicons/favicon-16x16.png"
-    />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -45,14 +33,14 @@
           appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
         });
       });
-      OneSignalDeferred.push(function() {
-        OneSignal.Slidedown.addEventListener('slidedownShown', function (event) {
-          console.log('slidedownShown', { event });
-          if (!OneSignal.Notifications.permission || !OneSignal.User.PushSubscription.optedIn ) {
-          OneSignal.Session.addOutcome("Web Push Rejected");
-          }
-        });
-      });
+      //OneSignalDeferred.push(function() {
+        //OneSignal.Slidedown.addEventListener('slidedownShown', function (event) {
+          //console.log('slidedownShown', { event });
+          //if (!OneSignal.Notifications.permission || !OneSignal.User.PushSubscription.optedIn ) {
+          //OneSignal.Session.addOutcome("Web Push Rejected");
+          //}
+        //});
+      //});
 
     </script>
 
