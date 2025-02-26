@@ -41,6 +41,22 @@
       }
 
       /*** Styles to customise prompt ***/
+/* CSS */
+.custom-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #e74c3c; /* Red background color */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.custom-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
 
   
     </style>
@@ -123,6 +139,8 @@
 
         <!--Footer-->
         <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">
+          <button onclick="OneSignal.login('from_web_button_clicked')" class="custom-button">Login</a>
+            
           <a class="text-gray-500 no-underline hover:no-underline" href="#"
             >&copy; OneSignal 2024</a
           >
