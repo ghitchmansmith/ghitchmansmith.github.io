@@ -41,30 +41,30 @@
       }
 
       /*** Styles to customise prompt ***/
-/* CSS */
-.floating-button {
+      .floating-button {
   position: fixed;
   bottom: 20px;
   left: 20px;
   padding: 10px 20px;
   font-size: 16px;
   color: white;
-  background-color: #e74c3c; /* Red background color */
+  background-color: #e74c3c;
   text-align: center;
   text-decoration: none;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .floating-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b;
 }
+
   
     </style>
   </head>
 
   <body class="leading-normal tracking-normal text-gray-900 tracking-wider">
-    <a href="#" class="floating-button" onclick="OneSignal.login('from_web_button_clicked')" >Login</a>
+    <a href="#" class="floating-button" id="loginButton">Login</a>
 
     <div
       class="h-screen pb-14 bg-right bg-cover"
@@ -148,6 +148,16 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.getElementById("loginButton").addEventListener("click", function () {
+  let userId = prompt("Please enter your ID:");
+  if (userId) {
+    OneSignal.login(userId);
+    alert("Logged in with ID: " + userId);
+  }
+});
+    </script>
     <!--<script>
       // Change the Notification Bell icon
       function editBellIcon() {
