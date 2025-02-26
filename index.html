@@ -154,7 +154,7 @@
   let userId = prompt("Please enter your ID:");
   if (userId) {
     OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.login("external_id");
+      await OneSignal.login(userId);
     });
     alert("Logged in with ID: " + userId);
   }
