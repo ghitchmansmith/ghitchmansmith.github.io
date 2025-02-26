@@ -42,8 +42,10 @@
 
       /*** Styles to customise prompt ***/
 /* CSS */
-.custom-button {
-  display: inline-block;
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   padding: 10px 20px;
   font-size: 16px;
   color: white;
@@ -54,15 +56,16 @@
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.custom-button:hover {
+.floating-button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
-
   
     </style>
   </head>
 
   <body class="leading-normal tracking-normal text-gray-900 tracking-wider">
+    <a href="#" class="floating-button" onclick="OneSignal.login('from_web_button_clicked')" >Login</a>
+
     <div
       class="h-screen pb-14 bg-right bg-cover"
       style="background-image: url('bg.svg')"
@@ -138,9 +141,7 @@
         </div>
 
         <!--Footer-->
-        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">
-          <button onclick="OneSignal.login('from_web_button_clicked')" class="custom-button">Login</a>
-            
+        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">            
           <a class="text-gray-500 no-underline hover:no-underline" href="#"
             >&copy; OneSignal 2024</a
           >
