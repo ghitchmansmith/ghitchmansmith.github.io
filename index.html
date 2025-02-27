@@ -24,11 +24,13 @@
     <!-- Manifest required for Web Push on iOS devices  
     <link rel="manifest" href="manifest.json" /> -->
 
-
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script
+      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+      defer
+    ></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
+      OneSignalDeferred.push(async function (OneSignal) {
         await OneSignal.init({
           appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
         });
@@ -42,24 +44,22 @@
 
       /*** Styles to customise prompt ***/
       .floating-button {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #e74c3c;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #e74c3c;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
 
-.floating-button:hover {
-  background-color: #c0392b;
-}
-
-  
+      .floating-button:hover {
+        background-color: #c0392b;
+      }
     </style>
   </head>
 
@@ -141,7 +141,7 @@
         </div>
 
         <!--Footer-->
-        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">            
+        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left">
           <a class="text-gray-500 no-underline hover:no-underline" href="#"
             >&copy; OneSignal 2024</a
           >
@@ -150,25 +150,25 @@
     </div>
 
     <script>
-      document.getElementById("loginButton").addEventListener("click", function () {
-  let userId = prompt("Please enter your ID:");
-  async function loginUser(userId) {
-    if (userId) {
-        try {
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function () {
+          let userId = prompt("Please enter your ID:");
+          // Usage example
+          loginUser(userId);
+        });
+      async function loginUser(userId) {
+        if (userId) {
+          try {
             await OneSignal.login(userId);
             console.log("User logged into OneSignal successfully");
-        } catch (error) {
+          } catch (error) {
             console.error("Error logging into OneSignal:", error);
+          }
+        } else {
+          console.warn("No userId provided for OneSignal login.");
         }
-    } else {
-        console.warn("No userId provided for OneSignal login.");
-    }
-    // Usage example
-loginUser(userId);
-}
-
-
-
+      }
     </script>
     <!--<script>
       // Change the Notification Bell icon
