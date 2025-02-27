@@ -152,12 +152,23 @@
     <script>
       document.getElementById("loginButton").addEventListener("click", function () {
   let userId = prompt("Please enter your ID:");
-  console.log(userId);
-  if (userId) {
-    OneSignal.login(userId);
-  }
-  alert("Logged in with ID: " + userId);
-  });
+  async function loginUser(userId) {
+    if (userId) {
+        try {
+            await OneSignal.login(userId);
+            console.log("User logged into OneSignal successfully");
+        } catch (error) {
+            console.error("Error logging into OneSignal:", error);
+        }
+    } else {
+        console.warn("No userId provided for OneSignal login.");
+    }
+    // Usage example
+loginUser(userId);
+}
+
+
+
     </script>
     <!--<script>
       // Change the Notification Bell icon
