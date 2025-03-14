@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tableBody = document.getElementById("surf-data");
   const titleElement = document.querySelector("h1");
 
+  // force a new push
   async function fetchSurfData() {
     try {
       let response = await fetch(
