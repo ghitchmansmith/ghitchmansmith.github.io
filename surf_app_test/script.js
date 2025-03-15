@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           let dateRow = document.createElement("tr");
           dateRow.classList.add(colorClass);
-          dateRow.innerHTML = `<td colspan="8"><strong>${rowDate}</strong></td>`;
+          dateRow.innerHTML = `<td colspan="9"><strong>${rowDate}</strong></td>`;
           tableBody.appendChild(dateRow);
         }
 
