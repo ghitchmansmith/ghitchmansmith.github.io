@@ -33,3 +33,24 @@ td, th {
 .row-yellow { background-color: yellow; }
 .row-light-green { background-color: lightgreen; }
 .row-dark-green { background-color: darkgreen; color: white; }
+
+
+.details-row td {
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .expand-toggle {
+    cursor: pointer;
+    text-align: center;
+  }
+  
