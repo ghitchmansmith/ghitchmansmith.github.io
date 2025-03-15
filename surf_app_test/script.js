@@ -62,13 +62,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         tr.innerHTML = `
                     <td>${new Date(row.time).toLocaleString()}</td>
+                    <td>${row.surf_score_readable}</td>
                     <td>${row.swell_direction}°</td>
                     <td>${row.swell_height}m</td>
                     <td>${row.swell_period}s</td>
                     <td>${row.wave_period}s</td>
                     <td>${row.wind_direction}°</td>
                     <td>${row.wind_speed} m/s</td>
-                    <td>${row.surf_score_readable}</td>
                 `;
 
         tableBody.appendChild(tr);
