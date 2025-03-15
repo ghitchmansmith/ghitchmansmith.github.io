@@ -62,8 +62,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         tr.innerHTML = `
             <td>${new Date(row.time).toLocaleString()}</td>
             <td>${row.surf_score_readable}</td>
-            <td>${row.wave_height}s</td>
-            <td>${row.wave_period}s</td>
+            <td class="${row.wave_height < 0.4 ? "cell-red" : ""}">${
+          row.wave_height
+        }m</td>            <td>${row.wave_period}s</td>
             <td>${row.swell_direction}°</td>
             <td class="${row.swell_height < 0.4 ? "cell-red" : ""}">${
           row.swell_height
