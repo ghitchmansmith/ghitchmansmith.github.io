@@ -19,6 +19,10 @@ table {
 thead {
     background-color: #333;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures it stays on top */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a slight shadow for visibility */
 }
 
 td, th {
@@ -53,4 +57,8 @@ td, th {
     cursor: pointer;
     text-align: center;
   }
-  
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
