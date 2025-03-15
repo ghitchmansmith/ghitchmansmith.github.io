@@ -35,80 +35,46 @@ document.addEventListener("DOMContentLoaded", async () => {
           lastDate = rowDate;
           const avgSurfScore =
             dailyScores[rowDate].total / dailyScores[rowDate].count;
-          let colorClass =
-            avgSurfScore < -8
-              ? "row-red"
-              : avgSurfScore < 0
-              ? "row-orange"
-              : avgSurfScore < 4
-              ? "row-yellow"
-              : avgSurfScore < 8
-              ? "row-light-green"
-              : "row-dark-green";
+          let colorClass = "";
+          if (avgSurfScore < -8) colorClass = "row-red";
+          else if (avgSurfScore < 0) colorClass = "row-orange";
+          else if (avgSurfScore < 4) colorClass = "row-yellow";
+          else if (avgSurfScore < 8) colorClass = "row-light-green";
+          else colorClass = "row-dark-green";
 
           let dateRow = document.createElement("tr");
           dateRow.classList.add(colorClass);
-          dateRow.innerHTML = `<td colspan="3"><strong>${rowDate}</strong></td>`;
+          dateRow.innerHTML = `<td colspan="9"><strong>${rowDate}</strong></td>`;
           tableBody.appendChild(dateRow);
         }
 
-        let mainRow = document.createElement("tr");
-        let detailsRow = document.createElement("tr");
-        detailsRow.classList.add("details-row");
+        let tr = document.createElement("tr");
 
-        let colorClass =
-          row.surf_score < -8
-            ? "row-red"
-            : row.surf_score < 0
-            ? "row-orange"
-            : row.surf_score < 4
-            ? "row-yellow"
-            : row.surf_score < 8
-            ? "row-light-green"
-            : "row-dark-green";
+        let colorClass = "";
+        if (row.surf_score < -8) colorClass = "row-red";
+        else if (row.surf_score < 0) colorClass = "row-orange";
+        else if (row.surf_score < 4) colorClass = "row-yellow";
+        else if (row.surf_score < 8) colorClass = "row-light-green";
+        else colorClass = "row-dark-green";
 
-        mainRow.classList.add(colorClass);
-        mainRow.innerHTML = `
+        tr.classList.add(colorClass);
+
+        tr.innerHTML = `
               <td>${new Date(row.time).toLocaleString()}</td>
               <td>${row.surf_score_readable}</td>
-              <td class="expand-toggle">🔽</td>
-          `;
+              <td class="${row.wave_height < 0.4 ? "cell-red" : ""}">${
+          row.wave_height
+        }m</td>            <td>${row.wave_period}s</td>
+              <td>${row.swell_direction}°</td>
+              <td class="${row.swell_height < 0.4 ? "cell-red" : ""}">${
+          row.swell_height
+        }m</td>
+              <td>${row.swell_period}s</td>
+              <td>${row.wind_direction}°</td>
+              <td>${row.wind_speed} m/s</td>
+            `;
 
-        detailsRow.innerHTML = `
-            <td colspan="3">
-              <div class="details-content">
-                <p><strong>Wave Height:</strong> ${row.wave_height}m</p>
-                <p><strong>Wave Period:</strong> ${row.wave_period}s</p>
-                <p><strong>Swell Direction:</strong> ${row.swell_direction}°</p>
-                <p><strong>Swell Height:</strong> ${row.swell_height}m</p>
-                <p><strong>Swell Period:</strong> ${row.swell_period}s</p>
-                <p><strong>Wind Direction:</strong> ${row.wind_direction}°</p>
-                <p><strong>Wind Speed:</strong> ${row.wind_speed} m/s</p>
-              </div>
-            </td>
-          `;
-
-        detailsRow.style.display = "none";
-
-        mainRow
-          .querySelector(".expand-toggle")
-          .addEventListener("click", () => {
-            const content = detailsRow.querySelector(".details-content");
-            if (detailsRow.style.display === "none") {
-              detailsRow.style.display = "table-row";
-              content.style.maxHeight = content.scrollHeight + "px";
-              mainRow.querySelector(".expand-toggle").textContent = "🔼";
-            } else {
-              content.style.maxHeight = "0";
-              setTimeout(() => {
-                detailsRow.style.display = "none";
-              }, 300);
-              mainRow.querySelector(".expand-toggle").textContent = "🔽";
-            }
-          });
-
-        tableBody.appendChild(mainRow);
-        tableBody.appendChild(detailsRow);
+        tableBody.appendChild(tr);
       });
     } catch (error) {
       console.error("Error fetching data:", error);
