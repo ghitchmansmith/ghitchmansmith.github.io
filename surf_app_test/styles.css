@@ -28,6 +28,7 @@ td, th {
 
 /* Surf score color coding */
 .row-red { background-color: red; color: white; }
+.cell-red { background-color: red; color: white; }
 .row-orange { background-color: orange; }
 .row-yellow { background-color: yellow; }
 .row-light-green { background-color: lightgreen; }

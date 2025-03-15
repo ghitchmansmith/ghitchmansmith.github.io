@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tableBody = document.getElementById("surf-data");
   const titleElement = document.querySelector("h1");
 
-  // force a new push
   async function fetchSurfData() {
     try {
       let response = await fetch(
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         titleElement.textContent = `Polzeath Surf Forecast (Last Updated: ${lastUpdated})`;
       }
 
-      tableBody.innerHTML = ""; // Clear existing rows
+      tableBody.innerHTML = "";
 
       let dailyScores = {};
       data.forEach((row) => {
@@ -61,15 +60,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         tr.classList.add(colorClass);
 
         tr.innerHTML = `
-                    <td>${new Date(row.time).toLocaleString()}</td>
-                    <td>${row.surf_score_readable}</td>
-                    <td>${row.swell_direction}°</td>
-                    <td>${row.swell_height}m</td>
-                    <td>${row.swell_period}s</td>
-                    <td>${row.wave_period}s</td>
-                    <td>${row.wind_direction}°</td>
-                    <td>${row.wind_speed} m/s</td>
-                `;
+            <td>${new Date(row.time).toLocaleString()}</td>
+            <td>${row.surf_score_readable}</td>
+            <td>${row.swell_direction}°</td>
+            <td class="${row.swell_height < 0.5 ? "cell-red" : ""}">${
+          row.swell_height
+        }m</td>
+            <td>${row.swell_period}s</td>
+            <td>${row.wave_period}s</td>
+            <td>${row.wind_direction}°</td>
+            <td>${row.wind_speed} m/s</td>
+          `;
 
         tableBody.appendChild(tr);
       });
