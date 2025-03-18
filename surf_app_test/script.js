@@ -73,7 +73,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-red"
                   : row.swell_period < 8
                   ? "cell-yellow"
-                  : "cell-green"
+                  : row.swell_period < 10
+                  ? "cell-light-green"
+                  : "cell-dark-green"
               }">${row.swell_period}s</td>
               <td>${row.wind_direction}°</td>
               <td>${row.wind_speed} m/s</td>
