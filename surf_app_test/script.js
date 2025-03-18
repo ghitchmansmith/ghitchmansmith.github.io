@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-light-green"
                   : "cell-dark-green"
               }">${row.wave_height}m</td>            
-              <td>${row.wave_period}s</td>
               <td class="${
                 row.swell_direction < 270 && row.swell_direction > 240
                   ? "cell-dark-green"
