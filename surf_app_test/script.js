@@ -64,12 +64,17 @@ document.addEventListener("DOMContentLoaded", async () => {
               <td>${row.surf_score_readable}</td>
               <td class="${row.wave_height < 0.4 ? "cell-red" : ""}">${
           row.wave_height
-        }m</td>            <td>${row.wave_period}s</td>
+        }m</td>            
+              <td>${row.wave_period}s</td>
               <td>${row.swell_direction}°</td>
-              <td class="${row.swell_height < 0.4 ? "cell-red" : ""}">${
-          row.swell_height
-        }m</td>
-              <td>${row.swell_period}s</td>
+              <td>${row.swell_height}m</td>
+              <td class="${
+                row.swell_period < 6
+                  ? "cell-red"
+                  : row.swell_period < 8
+                  ? "cell-yellow"
+                  : "cell-green"
+              }">${row.swell_period}s</td>
               <td>${row.wind_direction}°</td>
               <td>${row.wind_speed} m/s</td>
             `;
