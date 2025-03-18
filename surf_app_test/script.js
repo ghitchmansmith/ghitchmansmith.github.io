@@ -174,13 +174,51 @@ document.addEventListener("DOMContentLoaded", async () => {
         detailsRow.innerHTML = `
             <td colspan="10">
               <div class="details-content">
-                <p><strong>Wave Height:</strong> ${row.wave_height}m</p>
-                <p><strong>Wave Period:</strong> ${row.wave_period}s</p>
-                <p><strong>Swell Direction:</strong> ${row.swell_direction}°</p>
-                <p><strong>Swell Height:</strong> ${row.swell_height}m</p>
-                <p><strong>Swell Period:</strong> ${row.swell_period}s</p>
-                <p><strong>Wind Direction:</strong> ${row.wind_direction}°</p>
-                <p><strong>Wind Speed:</strong> ${row.wind_speed} m/s</p>
+                <p>A ${
+                  row.wave_height < 0.4
+                    ? "very small"
+                    : row.wave_height < 1
+                    ? "small"
+                    : row.wave_height < 1.5
+                    ? "moderate"
+                    : "good"
+                } sized waze with a ${
+          row.wind_speed < 6.7
+            ? "(light)"
+            : row.wind_speed < 8
+            ? "(mild)"
+            : row.wind_speed < 10
+            ? "(moderate)"
+            : row.wind_speed < 11.2
+            ? "(high)"
+            : "(very high)"
+        } ${
+          row.wind_direction < 120 && row.wind_direction > 60
+            ? "(offshore)"
+            : row.wind_direction > 120 || row.wind_direction < 60
+            ? "(cross-shore)"
+            : row.wind_direction > 240 || row.wind_direction < 300
+            ? "(onshore)"
+            : ""
+        } wind and a ${
+          row.swell_period < 6
+            ? "short"
+            : row.swell_period < 8
+            ? "moderate"
+            : row.swell_period < 10
+            ? "good"
+            : "long"
+        } swell period means that the conditions are ${
+          row.surf_score < -8
+            ? "basically unsurfable"
+            : row.surf_score < 0
+            ? "poor"
+            : row.surf_score < 4
+            ? "moderate"
+            : row.surf_score < 8
+            ? "good"
+            : "excellent"
+        } at this time.</p>
               </div>
             </td>
           `;
