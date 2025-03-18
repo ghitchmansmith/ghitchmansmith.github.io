@@ -66,7 +66,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           row.wave_height
         }m</td>            
               <td>${row.wave_period}s</td>
-              <td>${row.swell_direction}°</td>
+              <td class="${
+                row.swell_direction < 270 && row.swell_direction > 240
+                  ? "cell-dark-green"
+                  : ""
+              }">${row.swell_direction}°</td>
               <td>${row.swell_height}m</td>
               <td class="${
                 row.swell_period < 6
@@ -77,7 +81,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-light-green"
                   : "cell-dark-green"
               }">${row.swell_period}s</td>
-              <td>${row.wind_direction}°</td>
+              <td class="${
+                row.wind_direction < 120 && row.wind_direction > 60
+                  ? "cell-dark-green"
+                  : ""
+              }">${row.wind_direction}°</td>
               <td>${row.wind_speed} m/s</td>
             `;
 
