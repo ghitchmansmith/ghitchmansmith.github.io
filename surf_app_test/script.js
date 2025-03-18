@@ -218,9 +218,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             : row.swell_period < 10
             ? "good"
             : "long"
-        } swell period means that the conditions are ${
+        } swell period means that the conditions are potentially ${
           row.surf_score < -8
-            ? "basically unsurfable"
+            ? "unsurfable"
             : row.surf_score < 0
             ? "poor"
             : row.surf_score < 4
