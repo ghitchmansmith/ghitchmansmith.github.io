@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         let tr = document.createElement("tr");
+        let detailsRow = document.createElement("tr");
+        detailsRow.classList.add("details-row");
 
         let colorClass = "";
         if (row.surf_score < -8) colorClass = "row-red";
@@ -82,6 +84,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-light-green"
                   : "cell-dark-green"
               }">${row.surf_score_readable}</td>
+              <td class="expand-toggle,${
+                row.surf_score < -8
+                  ? "cell-red"
+                  : row.surf_score < 0
+                  ? "cell-orange"
+                  : row.surf_score < 4
+                  ? "cell-light-green"
+                  : row.surf_score < 8
+                  ? "cell-light-green"
+                  : "cell-dark-green"
+              }">🔽</td>
               <td class="${
                 row.wave_height < 0.4
                   ? "cell-red"
