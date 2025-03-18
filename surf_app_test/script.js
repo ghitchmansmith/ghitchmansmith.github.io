@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if (row.surf_score < 8) colorClass = "row-light-green";
         else colorClass = "row-dark-green";
 
-        //tr.classList.add(colorClass);
+        tr.classList.add(colorClass);
 
         tr.innerHTML = `
               <td class="${
