@@ -36,11 +36,11 @@ td, th {
 .row-orange { border: 5px solid orange; }
 .row-light-green { border: 5px solid lightgreen; }
 .row-dark-green { border: 5px solid darkgreen; }
-.date-row-red { background-color: red; color: white; }
-.date-row-orange { background-color: orange; }
-.date-row-yellow { background-color:  yellow; }
-.date-row-light-green { background-color:  lightgreen; }
-.date-row-dark-green { background-color:  darkgreen;  color: white; }
+.date-row-red { background-color: red; color: white; border: 2px solid black;}
+.date-row-orange { background-color: orange; border: 2px solid black; }
+.date-row-yellow { background-color:  yellow; border: 2px solid black; }
+.date-row-light-green { background-color:  lightgreen;  border: 2px solid black;}
+.date-row-dark-green { background-color:  darkgreen;  color: white;  border: 2px solid black;}
 .cell-red { background-color: red; color: white; }
 .cell-orange { background-color: orange; }
 .cell-yellow { background-color: yellow; }
@@ -74,5 +74,5 @@ td, th {
 
   table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
   }
