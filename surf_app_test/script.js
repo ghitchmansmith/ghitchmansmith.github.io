@@ -117,11 +117,23 @@ document.addEventListener("DOMContentLoaded", async () => {
               <td class="${
                 row.wind_direction < 120 && row.wind_direction > 60
                   ? "cell-dark-green"
+                  : row.wind_direction > 120 || row.wind_direction < 60
+                  ? "cell-yellow"
+                  : row.wind_direction > 240 || row.wind_direction < 300
+                  ? "cell-red"
                   : ""
               }">${row.wind_direction}°</td>
-              <td class="${row.wind_speed < 6.7 ? "cell-dark-green" : ""}">${
-          row.wind_speed
-        } m/s</td>
+              <td class="${
+                row.wind_speed < 6.7
+                  ? "cell-dark-green"
+                  : row.wind_speed < 8
+                  ? "cell-light-green"
+                  : row.wind_speed < 10
+                  ? "cell-yellow"
+                  : row.wind_speed < 11.2
+                  ? "cell-orange"
+                  : "cell-red"
+              }">${row.wind_speed} m/s</td>
             `;
 
         tableBody.appendChild(tr);
