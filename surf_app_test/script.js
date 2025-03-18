@@ -82,16 +82,30 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-light-green"
                   : "cell-dark-green"
               }">${row.surf_score_readable}</td>
-              <td class="${row.wave_height < 0.4 ? "cell-red" : ""}">${
-          row.wave_height
-        }m</td>            
+              <td class="${
+                row.wave_height < 0.4
+                  ? "cell-red"
+                  : row.wave_height < 1
+                  ? "cell-yellow"
+                  : row.wave_height < 1.5
+                  ? "cell-light-green"
+                  : "cell-dark-green"
+              }">${row.wave_height}m</td>            
               <td>${row.wave_period}s</td>
               <td class="${
                 row.swell_direction < 270 && row.swell_direction > 240
                   ? "cell-dark-green"
                   : ""
               }">${row.swell_direction}°</td>
-              <td>${row.swell_height}m</td>
+              <td class="${
+                row.swell_height < 0.4
+                  ? "cell-red"
+                  : row.swell_height < 1
+                  ? "cell-yellow"
+                  : row.swell_height < 1.5
+                  ? "cell-light-green"
+                  : "cell-dark-green"
+              }">${row.swell_height}m</td>
               <td class="${
                 row.swell_period < 6
                   ? "cell-red"
