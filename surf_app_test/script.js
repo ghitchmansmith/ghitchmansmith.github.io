@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-light-green"
                   : "cell-dark-green"
               }">${row.surf_score_readable}</td>
-              <td class="expand-toggle,${
+              <td class="expand-toggle ${
                 row.surf_score < -8
                   ? "cell-red"
                   : row.surf_score < 0
