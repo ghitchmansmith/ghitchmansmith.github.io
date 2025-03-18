@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if (row.surf_score < 0) colorClass = "row-orange";
         else if (row.surf_score < 4) colorClass = "row-yellow";
         else if (row.surf_score < 8) colorClass = "row-light-green";
-        else colorClass = "drow-dark-green";
+        else colorClass = "row-dark-green";
 
         tr.classList.add(colorClass);
 
@@ -73,14 +73,14 @@ document.addEventListener("DOMContentLoaded", async () => {
               }">${new Date(row.time).toLocaleString()}</td>
               <td class="${
                 row.surf_score < -8
-                  ? "score-cell-red"
+                  ? "cell-red"
                   : row.surf_score < 0
-                  ? "score-cell-orange"
+                  ? "cell-orange"
                   : row.surf_score < 4
-                  ? "score-cell-light-green"
+                  ? "cell-light-green"
                   : row.surf_score < 8
-                  ? "score-cell-light-green"
-                  : "score-cell-dark-green"
+                  ? "cell-light-green"
+                  : "cell-dark-green"
               }">${row.surf_score_readable}</td>
               <td class="${row.wave_height < 0.4 ? "cell-red" : ""}">${
           row.wave_height
