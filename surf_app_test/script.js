@@ -124,7 +124,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                   : row.wind_direction > 240 || row.wind_direction < 300
                   ? "cell-red"
                   : ""
-              }">${row.wind_direction}°</td>
+              }">${row.wind_direction}°<BR>
+                ${
+                  row.wind_direction < 120 && row.wind_direction > 60
+                    ? "(offshore)"
+                    : row.wind_direction > 120 || row.wind_direction < 60
+                    ? "(cross-shore)"
+                    : row.wind_direction > 240 || row.wind_direction < 300
+                    ? "(onshore)"
+                    : ""
+                }</td>
               <td class="${
                 row.wind_speed < 6.7
                   ? "cell-dark-green"
@@ -135,7 +144,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                   : row.wind_speed < 11.2
                   ? "cell-orange"
                   : "cell-red"
-              }">${row.wind_speed} m/s</td>
+              }">${row.wind_speed} m/s<BR>
+              ${
+                row.wind_speed < 6.7
+                  ? "(light)"
+                  : row.wind_speed < 8
+                  ? "(mild)"
+                  : row.wind_speed < 10
+                  ? "(moderate)"
+                  : row.wind_speed < 11.2
+                  ? "(high)"
+                  : "(very high)"
+              }</td>
             `;
 
         tableBody.appendChild(tr);
