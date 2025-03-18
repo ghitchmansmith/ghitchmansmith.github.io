@@ -94,7 +94,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               <td class="${
                 row.swell_direction < 270 && row.swell_direction > 240
                   ? "cell-dark-green"
-                  : ""
+                  : row.swell_direction < 315 && row.swell_direction > 195
+                  ? "cell-yellow"
+                  : "cell-red"
               }">${row.swell_direction}°</td>
               <td class="${
                 row.swell_height < 0.4
