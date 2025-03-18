@@ -2,34 +2,91 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Polzeath Surf Forecast</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background: url("polzeath-beach.jpg") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        padding: 20px;
+      }
+      .container {
+        width: 90%;
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #008cba;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+    </style>
   </head>
   <body>
-    <h1>Polzeath Surf Forecast</h1>
-    <table style="background-color: lightgray">
-      <thead>
-        <tr>
-          <th rowspan="2">Time</th>
-          <th rowspan="2" colspan="2">Rating</th>
-          <th colspan="1">Wave</th>
-          <th colspan="3">Swell</th>
-          <th colspan="2">Wind Direction</th>
-        </tr>
-        <tr>
-          <th>Height (m)</th>
-          <th>Direction</th>
-          <th>Height (m)</th>
-          <th>Period (s)</th>
-          <th>Direction</th>
-          <th>Speed (m/s)</th>
-        </tr>
-      </thead>
-      <tbody id="surf-data">
-        <!-- Data will be inserted here -->
-      </tbody>
-    </table>
+    <div class="hero">
+      <div class="hero-overlay">
+        <h1>Polzeath Surf Forecast</h1>
+        <p>Last Updated: <span id="last-update">March 18, 2025</span></p>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Surf Conditions</h2>
+      <table style="background-color: lightgray">
+        <thead>
+          <tr>
+            <th rowspan="2">Time</th>
+            <th rowspan="2" colspan="2">Rating</th>
+            <th colspan="1">Wave</th>
+            <th colspan="3">Swell</th>
+            <th colspan="2">Wind Direction</th>
+          </tr>
+          <tr>
+            <th>Height (m)</th>
+            <th>Direction</th>
+            <th>Height (m)</th>
+            <th>Period (s)</th>
+            <th>Direction</th>
+            <th>Speed (m/s)</th>
+          </tr>
+        </thead>
+        <tbody id="surf-data">
+          <!-- Data will be inserted here -->
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
