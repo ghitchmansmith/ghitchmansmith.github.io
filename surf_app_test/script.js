@@ -86,7 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                   ? "cell-dark-green"
                   : ""
               }">${row.wind_direction}°</td>
-              <td>${row.wind_speed} m/s</td>
+              <td class="${row.wind_speed < 6.7 ? "cell-dark-green" : ""}">${
+          row.wind_speed
+        } m/s</td>
             `;
 
         tableBody.appendChild(tr);
