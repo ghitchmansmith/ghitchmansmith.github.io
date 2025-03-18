@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           const avgSurfScore =
             dailyScores[rowDate].total / dailyScores[rowDate].count;
           let colorClass = "";
-          if (avgSurfScore < -8) colorClass = "row-red";
-          else if (avgSurfScore < 0) colorClass = "row-orange";
-          else if (avgSurfScore < 4) colorClass = "row-yellow";
-          else if (avgSurfScore < 8) colorClass = "row-light-green";
-          else colorClass = "row-dark-green";
+          if (avgSurfScore < -8) colorClass = "date-row-red";
+          else if (avgSurfScore < 0) colorClass = "date-row-orange";
+          else if (avgSurfScore < 4) colorClass = "date-row-yellow";
+          else if (avgSurfScore < 8) colorClass = "date-row-light-green";
+          else colorClass = "date-row-dark-green";
 
           let dateRow = document.createElement("tr");
           dateRow.classList.add(colorClass);
@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         let tr = document.createElement("tr");
 
         let colorClass = "";
-        if (row.surf_score < -8) colorClass = "date-row-red";
-        else if (row.surf_score < 0) colorClass = "date-row-orange";
-        else if (row.surf_score < 4) colorClass = "date-row-yellow";
-        else if (row.surf_score < 8) colorClass = "date-row-light-green";
-        else colorClass = "date-row-dark-green";
+        if (row.surf_score < -8) colorClass = "row-red";
+        else if (row.surf_score < 0) colorClass = "row-orange";
+        else if (row.surf_score < 4) colorClass = "row-yellow";
+        else if (row.surf_score < 8) colorClass = "row-light-green";
+        else colorClass = "drow-dark-green";
 
         tr.classList.add(colorClass);
 
