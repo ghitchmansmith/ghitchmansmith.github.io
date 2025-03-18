@@ -42,9 +42,9 @@ td, th {
 .row-dark-green { background-color: darkgreen; color: white; }
 
 .score-row {
-    height:5px;
-    max-height: 5px;
-    min-height: 5px;
+    height: 2px;
+    max-height: 2px;
+    min-height: 2px;
 }
 
 .details-row td {
