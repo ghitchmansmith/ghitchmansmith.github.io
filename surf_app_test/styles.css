@@ -31,20 +31,21 @@ td, th {
 }
 
 /* Surf score color coding */
-.cell-red { border: 5px solid red; }
-.cell-yellow { border: 5px solid yellow; }
-.cell-light-green { border: 5px solid lightgreen; }
-.cell-dark-green { border: 5px solid darkgreen; }
+.row-red { border: 5px solid red; }
+.row-yellow { border: 5px solid yellow; }
+.row-orange { border: 5px solid orange; }
+.row-light-green { border: 5px solid lightgreen; }
+.row-dark-green { border: 5px solid darkgreen; }
 .score-cell-red { background-color: red; color: white; }
 .score-cell-orange { background-color: orange; }
 .score-cell-yellow { background-color:  yellow; }
 .score-cell-light-green { background-color:  lightgreen; }
 .score-cell-dark-green { background-color:  darkgreen;  color: white; }
-.row-red { background-color: red; color: white; }
-.row-orange { background-color: orange; }
-.row-yellow { background-color: yellow; }
-.row-light-green { background-color: lightgreen; }
-.row-dark-green { background-color: darkgreen; color: white; }
+.cell-red { background-color: red; color: white; }
+.cell-orange { background-color: orange; }
+.cell-yellow { background-color: yellow; }
+.cell-light-green { background-color: lightgreen; }
+.cell-dark-green { background-color: darkgreen; color: white; }
 
 .score-row {
     height: 2px;
