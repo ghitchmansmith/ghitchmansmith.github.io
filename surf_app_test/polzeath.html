@@ -2,8 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polzeath Surf Forecast</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -15,7 +17,7 @@
         position: relative;
         width: 100%;
         height: 300px;
-        background: url("polzeath-beach.jpg") center/cover no-repeat;
+        background: url("polzeath-beach.png") center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -60,7 +62,7 @@
     <div class="hero">
       <div class="hero-overlay">
         <h1>Polzeath Surf Forecast</h1>
-        <p>Last Updated: <span id="last-update">March 18, 2025</span></p>
+        <p>Last Updated: <span id="last-update"></span></p>
       </div>
     </div>
     <div class="container">

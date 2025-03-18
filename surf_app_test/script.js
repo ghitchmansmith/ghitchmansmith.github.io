@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const lastUpdated = new Date(
           data[data.length - 1].last_updated
         ).toLocaleString();
-        titleElement.textContent = `Polzeath Surf Forecast (Last Updated: ${lastUpdated})`;
+        document.getElementById("last-update").innerHTML = lastUpdated;
       }
 
       tableBody.innerHTML = "";
