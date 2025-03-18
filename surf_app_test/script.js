@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
 
         detailsRow.innerHTML = `
-            <td colspan="3">
+            <td colspan="10">
               <div class="details-content">
                 <p><strong>Wave Height:</strong> ${row.wave_height}m</p>
                 <p><strong>Wave Period:</strong> ${row.wave_period}s</p>
