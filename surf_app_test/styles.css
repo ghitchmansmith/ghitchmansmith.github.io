@@ -32,10 +32,10 @@ td, th {
 
 /* Surf score color coding */
 .row-red { background-color: red; color: white; }
-.cell-red { background-color: red; color: white; }
-.cell-yellow { background-color: yellow; }
-.cell-light-green { background-color: lightgreen; }
-.cell-dark-green { background-color: darkgreen; color: white; }
+.cell-red { border-bottom: 2px solid red; color: white; }
+.cell-yellow { border-bottom: 2px solid yellow; }
+.cell-light-green { border-bottom: 2px solid lightgreen; }
+.cell-dark-green { border-bottom: 2px solid darkgreen; color: white; }
 .row-orange { background-color: orange; }
 .row-yellow { background-color: yellow; }
 .row-light-green { background-color: lightgreen; }

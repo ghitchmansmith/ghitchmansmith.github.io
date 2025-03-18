@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         tableBody.appendChild(tr);
 
         let individual_scores = document.createElement("tr");
+        classList.add(colorClass);
         individual_scores.innerHTML = `
         <td></td>
         <td></td>
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }"></td>
         <td class="${row.wind_speed < 6.7 ? "cell-dark-green" : ""}"></td>
       `;
-        tableBody.appendChild(individual_scores);
+        //tableBody.appendChild(individual_scores);
       });
     } catch (error) {
       console.error("Error fetching data:", error);
