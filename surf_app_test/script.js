@@ -172,7 +172,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
 
         detailsRow.innerHTML = `
-            <td colspan="10">
+            <td class="${
+              row.surf_score < -8
+                ? "cell-red"
+                : row.surf_score < 0
+                ? "cell-orange"
+                : row.surf_score < 4
+                ? "cell-light-green"
+                : row.surf_score < 8
+                ? "cell-light-green"
+                : "cell-dark-green"
+            }" colspan="10">
               <div class="details-content">
                 <p>A ${
                   row.wave_height < 0.4
@@ -182,23 +192,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                     : row.wave_height < 1.5
                     ? "moderate"
                     : "good"
-                } sized waze with a ${
+                } sized wave with a ${
           row.wind_speed < 6.7
-            ? "(light)"
+            ? "light"
             : row.wind_speed < 8
-            ? "(mild)"
+            ? "mild"
             : row.wind_speed < 10
-            ? "(moderate)"
+            ? "moderate"
             : row.wind_speed < 11.2
-            ? "(high)"
-            : "(very high)"
+            ? "high"
+            : "very high"
         } ${
           row.wind_direction < 120 && row.wind_direction > 60
-            ? "(offshore)"
+            ? "offshore"
             : row.wind_direction > 120 || row.wind_direction < 60
-            ? "(cross-shore)"
+            ? "cross-shore"
             : row.wind_direction > 240 || row.wind_direction < 300
-            ? "(onshore)"
+            ? "onshore"
             : ""
         } wind and a ${
           row.swell_period < 6
