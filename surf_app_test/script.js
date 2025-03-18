@@ -92,37 +92,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
 
         tableBody.appendChild(tr);
-
-        let individual_scores = document.createElement("tr");
-        classList.add(colorClass);
-        individual_scores.innerHTML = `
-        <td></td>
-        <td></td>
-        <td class="${row.wave_height < 0.4 ? "cell-red" : ""}"></td>            
-        <td></td>
-        <td class="${
-          row.swell_direction < 270 && row.swell_direction > 240
-            ? "cell-dark-green"
-            : ""
-        }"></td>
-        <td></td>
-        <td class="${
-          row.swell_period < 6
-            ? "cell-red"
-            : row.swell_period < 8
-            ? "cell-yellow"
-            : row.swell_period < 10
-            ? "cell-light-green"
-            : "cell-dark-green"
-        }"></td>
-        <td class="${
-          row.wind_direction < 120 && row.wind_direction > 60
-            ? "cell-dark-green"
-            : ""
-        }"></td>
-        <td class="${row.wind_speed < 6.7 ? "cell-dark-green" : ""}"></td>
-      `;
-        //tableBody.appendChild(individual_scores);
       });
     } catch (error) {
       console.error("Error fetching data:", error);
