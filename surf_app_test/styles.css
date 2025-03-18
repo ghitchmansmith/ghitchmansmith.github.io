@@ -35,6 +35,11 @@ td, th {
 .cell-yellow { border: 5px solid yellow; }
 .cell-light-green { border: 5px solid lightgreen; }
 .cell-dark-green { border: 5px solid darkgreen; }
+.score-cell-red { background-color: red; color: white; }
+.score-cell-orange { background-color: orange; }
+.score-cell-yellow { background-color:  yellow; }
+.score-cell-light-green { background-color:  lightgreen; }
+.score-cell-dark-green { background-color:  darkgreen;  color: white; }
 .row-red { background-color: red; color: white; }
 .row-orange { background-color: orange; }
 .row-yellow { background-color: yellow; }
