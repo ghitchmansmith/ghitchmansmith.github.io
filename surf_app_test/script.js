@@ -51,25 +51,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         let tr = document.createElement("tr");
 
         let colorClass = "";
-        if (row.surf_score < -8) colorClass = "row-red";
-        else if (row.surf_score < 0) colorClass = "row-orange";
-        else if (row.surf_score < 4) colorClass = "row-yellow";
-        else if (row.surf_score < 8) colorClass = "row-light-green";
-        else colorClass = "row-dark-green";
+        if (row.surf_score < -8) colorClass = "date-row-red";
+        else if (row.surf_score < 0) colorClass = "date-row-orange";
+        else if (row.surf_score < 4) colorClass = "date-row-yellow";
+        else if (row.surf_score < 8) colorClass = "date-row-light-green";
+        else colorClass = "date-row-dark-green";
 
         tr.classList.add(colorClass);
 
         tr.innerHTML = `
               <td class="${
                 row.surf_score < -8
-                  ? "score-cell-red"
+                  ? "cell-red"
                   : row.surf_score < 0
-                  ? "score-cell-orange"
+                  ? "cell-orange"
                   : row.surf_score < 4
-                  ? "score-cell-light-green"
+                  ? "cell-light-green"
                   : row.surf_score < 8
-                  ? "score-cell-light-green"
-                  : "score-cell-dark-green"
+                  ? "cell-light-green"
+                  : "cell-dark-green"
               }">${new Date(row.time).toLocaleString()}</td>
               <td class="${
                 row.surf_score < -8

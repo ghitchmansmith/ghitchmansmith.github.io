@@ -36,11 +36,11 @@ td, th {
 .row-orange { border: 5px solid orange; }
 .row-light-green { border: 5px solid lightgreen; }
 .row-dark-green { border: 5px solid darkgreen; }
-.score-cell-red { background-color: red; color: white; }
-.score-cell-orange { background-color: orange; }
-.score-cell-yellow { background-color:  yellow; }
-.score-cell-light-green { background-color:  lightgreen; }
-.score-cell-dark-green { background-color:  darkgreen;  color: white; }
+.date-row-red { background-color: red; color: white; }
+.date-row-orange { background-color: orange; }
+.date-row-yellow { background-color:  yellow; }
+.date-row-light-green { background-color:  lightgreen; }
+.date-row-dark-green { background-color:  darkgreen;  color: white; }
 .cell-red { background-color: red; color: white; }
 .cell-orange { background-color: orange; }
 .cell-yellow { background-color: yellow; }
