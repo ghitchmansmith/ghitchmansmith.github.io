@@ -171,7 +171,39 @@ document.addEventListener("DOMContentLoaded", async () => {
               }</td>
             `;
 
+        detailsRow.innerHTML = `
+            <td colspan="3">
+              <div class="details-content">
+                <p><strong>Wave Height:</strong> ${row.wave_height}m</p>
+                <p><strong>Wave Period:</strong> ${row.wave_period}s</p>
+                <p><strong>Swell Direction:</strong> ${row.swell_direction}°</p>
+                <p><strong>Swell Height:</strong> ${row.swell_height}m</p>
+                <p><strong>Swell Period:</strong> ${row.swell_period}s</p>
+                <p><strong>Wind Direction:</strong> ${row.wind_direction}°</p>
+                <p><strong>Wind Speed:</strong> ${row.wind_speed} m/s</p>
+              </div>
+            </td>
+          `;
+
+        detailsRow.style.display = "none";
+
+        tr.querySelector(".expand-toggle").addEventListener("click", () => {
+          const content = detailsRow.querySelector(".details-content");
+          if (detailsRow.style.display === "none") {
+            detailsRow.style.display = "table-row";
+            content.style.maxHeight = content.scrollHeight + "px";
+            tr.querySelector(".expand-toggle").textContent = "🔼";
+          } else {
+            content.style.maxHeight = "0";
+            setTimeout(() => {
+              detailsRow.style.display = "none";
+            }, 300);
+            tr.querySelector(".expand-toggle").textContent = "🔽";
+          }
+        });
+
         tableBody.appendChild(tr);
+        tableBody.appendChild(detailsRow);
       });
     } catch (error) {
       console.error("Error fetching data:", error);
