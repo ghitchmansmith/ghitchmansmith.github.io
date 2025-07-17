@@ -117,9 +117,9 @@ function showGameOver() {
     <div id="high-score" style="margin-top: 5px;">High Score: ${highScore}</div>
     <button id="restart-btn" style="margin-top: 20px; font-size: 1em; padding: 10px 20px;">Restart</button>
   `;
-  OneSignal.addTag("high-score", highScore);
-  OneSignal.addTag("latest-score", score);
-  OneSignal.addTag("last-game-over", Date.now());
+  OneSignal.User.addTag("high-score", highScore);
+  OneSignal.User.addTag("latest-score", score);
+  OneSignal.User.addTag("last-game-over", Date.now());
   gameArea.appendChild(overlay);
   document
     .getElementById("restart-btn")
@@ -294,7 +294,7 @@ function updateDifficulty() {
 }
 
 function startGame() {
-  OneSignal.addTag("last_game_started", Date.now());
+  OneSignal.User.addTag("last_game_started", Date.now());
   OneSignal.sendOutcome("New Game Started");
   spawnTimer = setInterval(spawnEnemy, enemySpawnInterval);
   setInterval(updateDifficulty, 5000);
