@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  background: #111;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+#game-area {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #1e1e1e;
+}
+
+.enemy {
+  position: absolute;
+  bottom: -100px;
+  width: 60px;
+}
+
+.projectile {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('assets/notification.png');
+  background-size: cover;
+}
+
+#score {
+  position: absolute;
+  padding:20px;
+  top: 0px;
+  left: 0px;
+  color: white;
+  background-color:#ff3426;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  font-weight:600;
+  font-size: 3em;
+  border-radius: 0px 0px 30px 0px;
+}
