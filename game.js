@@ -7,6 +7,8 @@ let oldHighScore = localStorage.getItem("highScore") || 0;
 let lives = 3;
 let gameOver = false;
 let ammo = 20;
+let journeyMode = false;
+let inventory = { email: false, sms: false, inapp: false };
 
 // Add Push Rush logo
 const logo = document.createElement("img");
@@ -26,38 +28,31 @@ livesDisplay.style.position = "absolute";
 livesDisplay.style.top = "0px";
 livesDisplay.style.right = "0px";
 livesDisplay.style.color = "white";
-livesDisplay.style.fontSize = "1.5em";
+livesDisplay.style.fontSize = "3em";
 livesDisplay.style.padding = "20px";
-livesDisplay.style.color = "white";
 livesDisplay.style.backgroundColor = "#ff3426";
 livesDisplay.style.borderLeft = "1px solid white";
 livesDisplay.style.borderBottom = "1px solid white";
-livesDisplay.style.fontWeight = "600";
-livesDisplay.style.fontSize = "3em";
 livesDisplay.style.borderRadius = "0px 0px 0px 30px";
 livesDisplay.style.fontFamily = "Arial";
 livesDisplay.textContent = `Lives: ${lives}`;
 gameArea.appendChild(livesDisplay);
 
-// Display ammo beside notification preview
+// Display ammo
 const ammoDisplay = document.createElement("div");
 ammoDisplay.id = "ammo";
 ammoDisplay.style.position = "absolute";
 ammoDisplay.style.bottom = "20px";
 ammoDisplay.style.left = "calc(50% + 140px)";
 ammoDisplay.style.color = "white";
-ammoDisplay.style.fontSize = "1.5em";
+ammoDisplay.style.fontSize = "2em";
 ammoDisplay.style.padding = "10px";
-ammoDisplay.style.color = "white";
 ammoDisplay.style.backgroundColor = "#ff3426";
 ammoDisplay.style.borderTop = "1px solid white";
 ammoDisplay.style.borderLeft = "1px solid white";
 ammoDisplay.style.borderRight = "1px solid white";
-ammoDisplay.style.fontWeight = "600";
-ammoDisplay.style.fontSize = "2em";
 ammoDisplay.style.borderRadius = "10px 10px 0px 0px";
 ammoDisplay.style.fontFamily = "Arial";
-
 ammoDisplay.textContent = `Ammo: ${ammo}`;
 gameArea.appendChild(ammoDisplay);
 
@@ -74,11 +69,10 @@ nextNotification.style.backgroundSize = "cover";
 nextNotification.style.zIndex = "5";
 gameArea.appendChild(nextNotification);
 
-// Choose first random image
 let nextNotificationIndex = Math.floor(Math.random() * 3) + 1;
 nextNotification.style.backgroundImage = `url('assets/monitor_notification_${nextNotificationIndex}.png')`;
 
-// Add "No Ammo!" warning
+// No Ammo Warning
 const noAmmoWarning = document.createElement("div");
 noAmmoWarning.id = "no-ammo-warning";
 noAmmoWarning.style.position = "absolute";
@@ -93,6 +87,110 @@ noAmmoWarning.style.zIndex = "100";
 noAmmoWarning.style.fontFamily = "Arial";
 noAmmoWarning.textContent = "No Ammo!";
 gameArea.appendChild(noAmmoWarning);
+
+// Inventory display
+const inventoryDisplay = document.createElement("div");
+inventoryDisplay.id = "inventory";
+inventoryDisplay.style.position = "absolute";
+inventoryDisplay.style.bottom = "10px";
+inventoryDisplay.style.right = "10px";
+inventoryDisplay.style.color = "white";
+inventoryDisplay.style.fontFamily = "Arial";
+inventoryDisplay.style.fontSize = "1.2em";
+inventoryDisplay.style.padding = "10px";
+inventoryDisplay.style.backgroundColor = "rgba(0,0,0,0.4)";
+inventoryDisplay.style.border = "1px solid white";
+inventoryDisplay.style.borderRadius = "10px";
+gameArea.appendChild(inventoryDisplay);
+
+function updateInventoryDisplay() {
+  inventoryDisplay.innerHTML = `
+    <div>Inventory:</div>
+    <div>Email: ${inventory.email ? "✅" : "❌"}</div>
+    <div>SMS: ${inventory.sms ? "✅" : "❌"}</div>
+    <div>In-App: ${inventory.inapp ? "✅" : "❌"}</div>
+  `;
+}
+updateInventoryDisplay();
+
+// Journey Mode activation
+function activateJourneyMode() {
+  journeyMode = true;
+  ammoDisplay.textContent = "Ammo: ∞";
+  livesDisplay.style.backgroundColor = "#FFD700";
+  gameArea.style.border = "5px solid #FFD700";
+
+  setTimeout(() => {
+    journeyMode = false;
+    ammoDisplay.textContent = `Ammo: ${ammo}`;
+    livesDisplay.style.backgroundColor = "#ff3426";
+    gameArea.style.border = "none";
+    inventory = { email: false, sms: false, inapp: false };
+    updateInventoryDisplay();
+  }, 20000);
+}
+
+// Randomly spawn collectibles
+function spawnCollectible() {
+  if (gameOver) return;
+
+  const types = ["email", "sms", "inapp"];
+  const available = types.filter((type) => !inventory[type]);
+  if (available.length === 0) return;
+
+  const type = available[Math.floor(Math.random() * available.length)];
+  const icon = document.createElement("img");
+  icon.classList.add("collectible");
+  icon.dataset.type = type;
+  icon.src = `assets/icon_${type}.png`;
+  icon.style.position = "absolute";
+  icon.style.width = "40px";
+  icon.style.zIndex = "12";
+
+  const direction = Math.random() < 0.5 ? "left" : "right";
+  let posX = direction === "left" ? -40 : window.innerWidth + 40;
+  let speed = direction === "left" ? 1.6 : -1.6;
+  const posY = Math.floor(
+    Math.random() * (window.innerHeight - 300 - 140) + 140
+  );
+
+  icon.style.left = `${posX}px`;
+  icon.style.top = `${posY}px`;
+  gameArea.appendChild(icon);
+
+  function animate() {
+    if (gameOver || !document.body.contains(icon)) {
+      icon.remove();
+      return;
+    }
+    posX += speed;
+    icon.style.left = `${posX}px`;
+    icon.style.top = `${posY}px`;
+
+    if (
+      (direction === "left" && posX > window.innerWidth + 40) ||
+      (direction === "right" && posX < -40)
+    ) {
+      icon.remove();
+      return;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
+
+// Schedule next collectible
+function scheduleCollectible() {
+  setInterval(() => {
+    if (!gameOver) {
+      spawnCollectible();
+    }
+  }, 5000); // every 5 seconds
+}
+
+scheduleCollectible();
 
 // Game Over screen
 function showGameOver() {
@@ -118,6 +216,8 @@ function showGameOver() {
     <div id="high-score" style="margin-top: 5px;">High Score: ${highScore}</div>
     <button id="restart-btn" style="margin-top: 20px; font-size: 1em; padding: 10px 20px;">Restart</button>
   `;
+
+  // do some OneSignal tagging for scores and times of game end
   OneSignal.User.addTag("high-score", highScore.toString());
   OneSignal.User.addTag("latest-score", score.toString());
   OneSignal.User.addTag("last-game-over", getUnix());
@@ -197,11 +297,13 @@ function spawnEnemy() {
       !enemy.classList.contains("converted")
     ) {
       enemy.remove();
-      lives--;
-      livesDisplay.textContent = `Lives: ${lives}`;
-      if (lives <= 0) {
-        gameOver = true;
-        showGameOver();
+      if (!journeyMode) {
+        lives--;
+        livesDisplay.textContent = `Lives: ${lives}`;
+        if (lives <= 0) {
+          gameOver = true;
+          showGameOver();
+        }
       }
       return;
     }
@@ -210,11 +312,10 @@ function spawnEnemy() {
   requestAnimationFrame(animate);
 }
 
-// Shooting logic
 function shoot(x, y) {
   if (gameOver) return;
 
-  if (ammo <= 0) {
+  if (!journeyMode && ammo <= 0) {
     noAmmoWarning.style.display = "block";
     setTimeout(() => {
       noAmmoWarning.style.display = "none";
@@ -222,9 +323,11 @@ function shoot(x, y) {
     return;
   }
 
-  ammo--;
-  ammoDisplay.textContent = `Ammo: ${ammo}`;
-  if (ammo <= 3 && !document.getElementById("refill-logo")) spawnRefillLogo();
+  if (!journeyMode) {
+    ammo--;
+    ammoDisplay.textContent = `Ammo: ${ammo}`;
+    if (ammo <= 3 && !document.getElementById("refill-logo")) spawnRefillLogo();
+  }
 
   const projectileIndex = nextNotificationIndex;
   nextNotificationIndex = Math.floor(Math.random() * 3) + 1;
@@ -240,42 +343,78 @@ function shoot(x, y) {
   projectile.style.height = `160px`;
   gameArea.appendChild(projectile);
   let scale = 1.0;
+
   const move = setInterval(() => {
     let top = parseInt(projectile.style.top);
     if (top < 0 || scale <= 0.2) {
       clearInterval(move);
       projectile.remove();
-    } else {
-      top -= 30;
-      scale -= 0.025;
-      projectile.style.top = `${top}px`;
-      projectile.style.transform = `scale(${scale})`;
-      document.querySelectorAll(".enemy").forEach((enemy) => {
-        const enemyRect = enemy.getBoundingClientRect();
-        const projRect = projectile.getBoundingClientRect();
-        if (
-          projRect.left < enemyRect.right &&
-          projRect.right > enemyRect.left &&
-          projRect.top < enemyRect.bottom &&
-          projRect.bottom > enemyRect.top &&
-          !enemy.classList.contains("converted")
-        ) {
+      return;
+    }
+
+    top -= 30;
+    scale -= 0.025;
+    projectile.style.top = `${top}px`;
+    projectile.style.transform = `scale(${scale})`;
+
+    const projRect = projectile.getBoundingClientRect();
+
+    // Check collision with enemies
+    document.querySelectorAll(".enemy").forEach((enemy) => {
+      const enemyRect = enemy.getBoundingClientRect();
+      if (
+        projRect.left < enemyRect.right &&
+        projRect.right > enemyRect.left &&
+        projRect.top < enemyRect.bottom &&
+        projRect.bottom > enemyRect.top &&
+        !enemy.classList.contains("converted")
+      ) {
+        clearInterval(move);
+        projectile.remove();
+        enemy.src = `assets/converted_enemy_${enemy.dataset.spriteIndex}.gif`;
+        enemy.classList.add("converted");
+        enemy.style.transition = "opacity 3s ease";
+        enemy.style.opacity = "1";
+        setTimeout(() => {
+          enemy.style.opacity = "0";
+          setTimeout(() => enemy.remove(), 2000);
+        }, 2000);
+        score++;
+        scoreDisplay.textContent = `Score: ${score} | High Score: ${highScore}`;
+        if (score > highScore) {
+          highScore = score;
+          localStorage.setItem("highScore", highScore);
+        }
+        if (window.OneSignal) {
+          OneSignal.Session.sendOutcome("enemy_converted");
+        }
+      }
+    });
+
+    // Check collision with collectibles
+    document.querySelectorAll(".collectible").forEach((icon) => {
+      const iconRect = icon.getBoundingClientRect();
+      if (
+        projRect.left < iconRect.right &&
+        projRect.right > iconRect.left &&
+        projRect.top < iconRect.bottom &&
+        projRect.bottom > iconRect.top
+      ) {
+        const type = icon.dataset.type;
+        if (!inventory[type]) {
+          inventory[type] = true;
+          updateInventoryDisplay();
+          icon.remove();
           clearInterval(move);
           projectile.remove();
-          enemy.src = `assets/converted_enemy_${enemy.dataset.spriteIndex}.gif`;
-          enemy.classList.add("converted");
-          score++;
-          scoreDisplay.textContent = `Score: ${score} | High Score: ${highScore}`;
-          if (score > highScore) {
-            highScore = score;
-            localStorage.setItem("highScore", highScore);
-          }
-          if (window.OneSignal) {
-            OneSignal.Session.sendOutcome("enemy_converted");
+
+          // Check if all collected
+          if (inventory.email && inventory.sms && inventory.inapp) {
+            activateJourneyMode();
           }
         }
-      });
-    }
+      }
+    });
   }, 40);
 }
 
