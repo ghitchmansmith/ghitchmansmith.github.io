@@ -117,8 +117,8 @@ function showGameOver() {
     <div id="high-score" style="margin-top: 5px;">High Score: ${highScore}</div>
     <button id="restart-btn" style="margin-top: 20px; font-size: 1em; padding: 10px 20px;">Restart</button>
   `;
-  OneSignal.User.addTag("high-score", highScore);
-  OneSignal.User.addTag("latest-score", score);
+  OneSignal.User.addTag("high-score", highScore.toString());
+  OneSignal.User.addTag("latest-score", score.toString());
   OneSignal.User.addTag("last-game-over", getUnix());
   gameArea.appendChild(overlay);
   document
