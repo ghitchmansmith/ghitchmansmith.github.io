@@ -266,7 +266,7 @@ function shoot(x, y) {
             localStorage.setItem("highScore", highScore);
           }
           if (window.OneSignal) {
-            OneSignal.sendOutcome("enemy_converted");
+            OneSignal.Session.sendOutcome("enemy_converted");
           }
         }
       });
@@ -300,7 +300,7 @@ function getUnix() {
 
 function startGame() {
   OneSignal.User.addTag("last_game_started", getUnix());
-  OneSignal.sendOutcome("New Game Started");
+  OneSignal.Session.sendOutcome("New Game Started");
   spawnTimer = setInterval(spawnEnemy, enemySpawnInterval);
   setInterval(updateDifficulty, 5000);
 }
