@@ -225,10 +225,17 @@ function showGameOver() {
   overlay.style.justifyContent = "center";
   overlay.style.alignItems = "center";
   noAmmoWarning.style.fontFamily = "Arial";
+  let additionalText;
+  if (highScore > oldHighScore) {
+    additionalText = `Congrats on beating your high score! 🏆 <br><br> Now that you're a push pro, why not check out <a href="https://onesignal.com" target="_blank" style="font-weight:600;color:#ff3426;">OneSignal</a> to see if you can bring your push skills to the real world?`;
+  } else {
+    additionalText = `Looks like you couldn't beat your high score 😢 <br> Maybe more notifications might have helped?<br> You know who offers unlimited notifications? <a href="https://onesignal.com" target="_blank" style="font-weight:600;color:#ff3426;">OneSignal</a>!`;
+  }
   overlay.innerHTML = `
     <div><b style="font-size:3em;">Game Over!</b></div>
     <div id="final-score" style="margin-top: 10px;">Final Score: ${score}</div>
     <div id="high-score" style="margin-top: 5px;">High Score: ${highScore}</div>
+    <div id="additional-text" style="margin-top: 5px;text-align:center;font-size: 0.5em !important;">${additionalText}</div>
     <button id="restart-btn" style="margin-top: 20px; font-size: 1em; padding: 10px 20px;">Restart</button>
   `;
 
@@ -496,7 +503,12 @@ startModal.innerHTML = `
     <li>Allowing users to walk past without becoming engaged will cost lives. When your life count hits 0, it's game over 😢</li>
     <li>Keep an eye on your ammo! Clicking on the floating OneSignal logos will replenish it: <img src="assets/onesignal_logo.png" style="height:30px;"/>
 </li>
-    <li>Remember OneSignal doesn't just offer push notifications! If you see another mesasaging channel appear shoot it. Once you've collected all three you're reeady for Omnichannel messaging and Journey Mode will be activated, giving you invincibility and unlimited ammo for 30 seconds!</li>
+    <li>Remember OneSignal doesn't just offer push notifications! If you see another messaging channel appear shoot it!<br><br>
+        <ul>
+        <li>Once you've collected all three you're ready for Omnichannel messaging and a <a href="https://documentation.onesignal.com/docs/journeys-overview" target="_blank" style="font-weight:600;color:#ff3426;">Journey</a> will be activated!</li>
+        <li>Journey mode adds a re-enagement journey to your push platform, giving you invincibility and unlimited ammo for 30 seconds!</li>
+        </ul>
+    </li>
     <li>Try to beat your high score and see if you can master Push Notifications!</li>
     </ul>
     <button id="start-btn" style="color:white;font-size: 3em; padding: 10px 20px 10px 25px; margin-top: 20px; border:2px solid white; border-radius: 20px; background-color:#ff3426;">Go! ▶</button>
