@@ -28,7 +28,7 @@ livesDisplay.style.position = "absolute";
 livesDisplay.style.top = "0px";
 livesDisplay.style.right = "0px";
 livesDisplay.style.color = "white";
-livesDisplay.style.fontSize = "3em";
+livesDisplay.style.fontSize = "2em";
 livesDisplay.style.padding = "20px";
 livesDisplay.style.backgroundColor = "#ff3426";
 livesDisplay.style.borderLeft = "1px solid white";
@@ -105,7 +105,7 @@ gameArea.appendChild(inventoryDisplay);
 
 function updateInventoryDisplay() {
   inventoryDisplay.innerHTML = `
-    <div>Inventory:</div>
+    <div>Active Channels:</div>
     <div>Email: ${inventory.email ? "✅" : "❌"}</div>
     <div>SMS: ${inventory.sms ? "✅" : "❌"}</div>
     <div>In-App: ${inventory.inapp ? "✅" : "❌"}</div>
@@ -120,6 +120,21 @@ function activateJourneyMode() {
   livesDisplay.style.backgroundColor = "#FFD700";
   gameArea.style.border = "5px solid #FFD700";
 
+  // Flash journey mode image
+  const journeyImage = document.createElement("img");
+  journeyImage.src = "assets/journey_mode.png";
+  journeyImage.style.position = "absolute";
+  journeyImage.style.top = "50%";
+  journeyImage.style.left = "50%";
+  journeyImage.style.transform = "translate(-50%, -50%)";
+  journeyImage.style.maxHeight = "400px";
+  journeyImage.style.zIndex = "200";
+  gameArea.appendChild(journeyImage);
+
+  setTimeout(() => {
+    journeyImage.remove();
+  }, 2000);
+
   setTimeout(() => {
     journeyMode = false;
     ammoDisplay.textContent = `Ammo: ${ammo}`;
@@ -130,7 +145,7 @@ function activateJourneyMode() {
   }, 20000);
 }
 
-// Randomly spawn collectibles
+// spawn collectibles
 function spawnCollectible() {
   if (gameOver) return;
 
@@ -144,7 +159,7 @@ function spawnCollectible() {
   icon.dataset.type = type;
   icon.src = `assets/icon_${type}.png`;
   icon.style.position = "absolute";
-  icon.style.width = "40px";
+  icon.style.width = "80px";
   icon.style.zIndex = "12";
 
   const direction = Math.random() < 0.5 ? "left" : "right";
@@ -187,7 +202,7 @@ function scheduleCollectible() {
     if (!gameOver) {
       spawnCollectible();
     }
-  }, 5000); // every 5 seconds
+  }, 7000); // every 7 seconds
 }
 
 scheduleCollectible();
@@ -471,21 +486,20 @@ startModal.innerHTML = `
     <img src="assets/push_rush.png" style="height:100px;"/>
     <p>You've just joined the marketing team at Push Rush Inc. and your role is to get as many of your users engaged as possible.</p>
     <p> Luckily you have <a href="https://onesignal.com" target="_blank" style="font-weight:600;color:#ff3426;">OneSignal</a> <img src="assets/onesignal_logo.png" style="height:20px;"/> to help!</p>
-    <p>Use your OneSignal account to fire push notifications directly at users:</p>
+ <ul style="text-align:left;  vertical-align: middle;">
+      <li>Use your OneSignal account to fire push notifications directly at users:<br>
     <img src="assets/enemy_left_1.gif" />
     <img src="assets/enemy_left_3.gif" />
     <img src="assets/enemy_left_4.gif" />
     <img src="assets/enemy_left_2.gif" />
-    <p>Engaged users will receive the push on their phone and be thrilled of course!</p>
-    <img src="assets/converted_enemy_1.gif" />
-    <img src="assets/converted_enemy_3.gif" />
-    <img src="assets/converted_enemy_4.gif" />
-    <img src="assets/converted_enemy_2.gif" />
-    <p>Allowing users to walk past without becoming engaged will cost lives. When your life count hits 0, it's game over 😢</p>
-    <p>Keep an eye on your ammo! Clicking on the floating OneSignal logos will replenish your ammo:</p>
-    <img src="assets/onesignal_logo.png" style="height:40px;"/>
-    <p>Try to beat your high score and see if you can master Push Notifications!</p>
-    <button id="start-btn" style="color:white;font-size: 3em; padding: 10px 20px 10px 25px; margin-top: 20px; border:2px solid white; border-radius: 20px; background-color:#ff3426;">▶</button>
+      </li>
+    <li>Allowing users to walk past without becoming engaged will cost lives. When your life count hits 0, it's game over 😢</li>
+    <li>Keep an eye on your ammo! Clicking on the floating OneSignal logos will replenish it: <img src="assets/onesignal_logo.png" style="height:30px;"/>
+</li>
+    <li>Remember OneSignal doesn't just offer push notifications! If you see another mesasaging channel appear shoot it. Once you've collected all three you're reeady for Omnichannel messaging and Journey Mode will be activated, giving you invincibility and unlimited ammo for 30 seconds!</li>
+    <li>Try to beat your high score and see if you can master Push Notifications!</li>
+    </ul>
+    <button id="start-btn" style="color:white;font-size: 3em; padding: 10px 20px 10px 25px; margin-top: 20px; border:2px solid white; border-radius: 20px; background-color:#ff3426;">Go! ▶</button>
   </div>
 `;
 document.body.appendChild(startModal);
