@@ -117,9 +117,9 @@ function showGameOver() {
     <div id="high-score" style="margin-top: 5px;">High Score: ${highScore}</div>
     <button id="restart-btn" style="margin-top: 20px; font-size: 1em; padding: 10px 20px;">Restart</button>
   `;
-  OneSignal.sendTag("high-score", highScore);
-  OneSignal.sendTag("latest-score", score);
-  OneSignal.sendTag("last-game-over", Date.now());
+  OneSignal.addTag("high-score", highScore);
+  OneSignal.addTag("latest-score", score);
+  OneSignal.addTag("last-game-over", Date.now());
   gameArea.appendChild(overlay);
   document
     .getElementById("restart-btn")
@@ -267,7 +267,6 @@ function shoot(x, y) {
           }
           if (window.OneSignal) {
             OneSignal.sendOutcome("enemy_converted");
-            OneSignal.sendTag(`converted_${score}`, "true");
           }
         }
       });
@@ -295,7 +294,7 @@ function updateDifficulty() {
 }
 
 function startGame() {
-  OneSignal.sendTag("last_game_started", Date.now());
+  OneSignal.addTag("last_game_started", Date.now());
   OneSignal.sendOutcome("New Game Started");
   spawnTimer = setInterval(spawnEnemy, enemySpawnInterval);
   setInterval(updateDifficulty, 5000);
