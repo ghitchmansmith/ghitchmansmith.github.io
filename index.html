@@ -50,7 +50,7 @@
         padding: 10px 20px;
         font-size: 16px;
         color: white;
-        background-color: #e74c3c;
+        background-color: #ff3426;
         text-align: center;
         text-decoration: none;
         border-radius: 5px;
@@ -65,9 +65,12 @@
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        height: 100px;
         z-index: 10;
+        color: #ff3426;
+        font-size: 3em;
         cursor: pointer;
+        text-align: center;
+        font-weight: 800;
       }
     </style>
   </head>
@@ -226,11 +229,14 @@
       const checkExistence = setInterval(editBellIcon, 500);
 
     </script>-->
-    <img
-      id="bottom-logo"
-      src="push_rush.png"
-      alt="Play Push Rush"
-      onclick="playPushRush();"
-    />
+    <div id="bottom-logo">
+      PLAY
+      <img
+        src="push_rush.png"
+        alt="Play Push Rush"
+        onclick="playPushRush();"
+        style="height: 100px"
+      />
+    </div>
   </body>
 </html>
