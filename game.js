@@ -295,7 +295,7 @@ function updateDifficulty() {
 
 function getUnix() {
   let thisdate = Date.now();
-  return thisdate.toString;
+  return thisdate.toString();
 }
 
 function startGame() {
