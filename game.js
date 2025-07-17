@@ -3,6 +3,7 @@ const scoreDisplay = document.getElementById("score");
 scoreDisplay.style.fontFamily = "Arial";
 let score = 0;
 let highScore = localStorage.getItem("highScore") || 0;
+let oldHighScore = localStorage.getItem("highScore") || 0;
 let lives = 3;
 let gameOver = false;
 let ammo = 20;
@@ -120,6 +121,10 @@ function showGameOver() {
   OneSignal.User.addTag("high-score", highScore.toString());
   OneSignal.User.addTag("latest-score", score.toString());
   OneSignal.User.addTag("last-game-over", getUnix());
+  if (oldHighScore < highScore) {
+    OneSignal.User.addTag("high-score-beaten", getUnix());
+    oldHighScore = highScore;
+  }
   gameArea.appendChild(overlay);
   document
     .getElementById("restart-btn")
@@ -326,7 +331,7 @@ startModal.innerHTML = `
     <p><b style="font-size:1.5em;">Welcome to</b></p>
     <img src="assets/push_rush.png" style="height:100px;"/>
     <p>You've just joined the marketing team at Push Rush Inc. and your role is to get as many of your users engaged as possible.</p>
-    <p> Luckily you have <a href="https://onesignal.com" target="_blank" style="color:#ff3426;">OneSignal</a> <img src="assets/onesignal_logo.png" style="height:20px;"/> to help!</p>
+    <p> Luckily you have <a href="https://onesignal.com" target="_blank" style="font-weight:600;color:#ff3426;">OneSignal</a> <img src="assets/onesignal_logo.png" style="height:20px;"/> to help!</p>
     <p>Use your OneSignal account to fire push notifications directly at users:</p>
     <img src="assets/enemy_left_1.gif" />
     <img src="assets/enemy_left_3.gif" />
