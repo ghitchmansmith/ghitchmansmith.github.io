@@ -60,6 +60,15 @@
       .floating-button:hover {
         background-color: #c0392b;
       }
+      #bottom-logo {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100px;
+        z-index: 10;
+        pointer-events: none;
+      }
     </style>
   </head>
 
@@ -214,5 +223,10 @@
       const checkExistence = setInterval(editBellIcon, 500);
 
     </script>-->
+    <img
+      id="bottom-logo"
+      src="/push_rush/assets/push_rush.png"
+      alt="Play Push Rush"
+    />
   </body>
 </html>
