@@ -119,7 +119,7 @@ function showGameOver() {
   `;
   OneSignal.User.addTag("high-score", highScore);
   OneSignal.User.addTag("latest-score", score);
-  OneSignal.User.addTag("last-game-over", Date.now());
+  OneSignal.User.addTag("last-game-over", getUnix());
   gameArea.appendChild(overlay);
   document
     .getElementById("restart-btn")
@@ -293,8 +293,13 @@ function updateDifficulty() {
   spawnTimer = setInterval(spawnEnemy, enemySpawnInterval);
 }
 
+function getUnix() {
+  let thisdate = Date.now();
+  return thisdate.toString;
+}
+
 function startGame() {
-  OneSignal.User.addTag("last_game_started", Date.now());
+  OneSignal.User.addTag("last_game_started", getUnix());
   OneSignal.sendOutcome("New Game Started");
   spawnTimer = setInterval(spawnEnemy, enemySpawnInterval);
   setInterval(updateDifficulty, 5000);
