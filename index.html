@@ -62,12 +62,12 @@
       }
       #bottom-logo {
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         height: 100px;
         z-index: 10;
-        pointer-events: none;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -179,6 +179,9 @@
           console.warn("No userId provided for OneSignal login.");
         }
       }
+      function playPushRush() {
+        top.location = "push_rush/index.html";
+      }
     </script>
     <!--<script>
       // Change the Notification Bell icon
@@ -225,8 +228,9 @@
     </script>-->
     <img
       id="bottom-logo"
-      src="/push_rush/assets/push_rush.png"
+      src="push_rush.png"
       alt="Play Push Rush"
+      onclick="playPushRush();"
     />
   </body>
 </html>
