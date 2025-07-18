@@ -289,7 +289,7 @@ function spawnRefillLogo() {
 function spawnEnemy() {
   if (gameOver) return;
   const enemy = document.createElement("img");
-  const enemyIndex = Math.floor(Math.random() * 15) + 1;
+  const enemyIndex = Math.floor(Math.random() * 17) + 1;
   enemy.dataset.spriteIndex = enemyIndex;
   enemy.classList.add("enemy");
   const direction = Math.random() < 0.5 ? "left" : "right";
