@@ -352,7 +352,7 @@ function shoot(x, y) {
   }
 
   const projectileIndex = nextNotificationIndex;
-  nextNotificationIndex = Math.floor(Math.random() * 3) + 1;
+  nextNotificationIndex = Math.floor(Math.random() * 10) + 1;
   nextNotification.style.backgroundImage = `url('assets/monitor_notification_${nextNotificationIndex}.png')`;
 
   const projectile = document.createElement("div");
