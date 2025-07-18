@@ -359,7 +359,7 @@ function shoot(x, y) {
   projectile.classList.add("projectile");
   projectile.style.backgroundImage = `url('assets/notification_${projectileIndex}.png')`;
   projectile.style.backgroundSize = "cover";
-  projectile.style.left = `${x}px`;
+  projectile.style.left = `calc(${x}px - 80px)`;
   projectile.style.top = `${y}px`;
   projectile.style.width = `200px`;
   projectile.style.height = `160px`;
@@ -444,8 +444,8 @@ gameArea.addEventListener("click", (e) =>
   shoot(e.clientX, window.innerHeight - 50)
 );
 gameArea.addEventListener("mousemove", (e) => {
-  nextNotification.style.left = `${e.clientX}px`;
-  ammoDisplay.style.left = `calc(${e.clientX}px + 140px)`;
+  nextNotification.style.left = `calc(${e.clientX}px + 40px)`;
+  ammoDisplay.style.left = `calc(${e.clientX}px + 180px)`;
 });
 
 // Difficulty scaling
