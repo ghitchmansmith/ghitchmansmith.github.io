@@ -4,7 +4,7 @@ scoreDisplay.style.fontFamily = "Arial";
 let score = 0;
 let highScore = localStorage.getItem("highScore") || 0;
 let oldHighScore = localStorage.getItem("highScore") || 0;
-let lives = 3;
+let lives = 3000;
 let gameOver = false;
 let ammo = 20;
 let journeyMode = false;
@@ -289,7 +289,7 @@ function spawnRefillLogo() {
 function spawnEnemy() {
   if (gameOver) return;
   const enemy = document.createElement("img");
-  const enemyIndex = Math.floor(Math.random() * 10) + 1;
+  const enemyIndex = Math.floor(Math.random() * 15) + 1;
   enemy.dataset.spriteIndex = enemyIndex;
   enemy.classList.add("enemy");
   const direction = Math.random() < 0.5 ? "left" : "right";
