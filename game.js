@@ -460,7 +460,7 @@ function updateDifficulty() {
 }
 
 function getUnix() {
-  let thisdate = Date.now();
+  let thisdate = Math.floor(Date.now() / 1000);
   return thisdate.toString();
 }
 
