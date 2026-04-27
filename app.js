@@ -472,23 +472,27 @@ OneSignalDeferred.push(async function(OneSignal) {
   });
   console.log('[OneSignal] SDK initialised');
 
-  // Retrieve existing tags from OneSignal and populate the panel
-  try {
-    const existingTags = await OneSignal.User.getTags();
-    if (existingTags && Object.keys(existingTags).length > 0) {
-      Object.assign(dataTags, existingTags);
-      renderTags();
-      console.log('[OneSignal] Loaded existing tags:', existingTags);
-    }
-  } catch (e) {
-    console.warn('[OneSignal] Could not retrieve existing tags:', e);
-  }
-
-  // Also restore the external ID if logged in
+  // Restore the external ID if logged in, and re-login to refresh tags from server
   const storedExtId = OneSignal.User.externalId;
   if (storedExtId) {
     currentExternalId = storedExtId;
     updateAccountUI();
+
+    // Re-login to sync tags from the server
+    await OneSignal.login(storedExtId);
+    console.log('[OneSignal] Re-logged in as:', storedExtId);
+
+    // Now getTags() will have fresh server data
+    try {
+      const existingTags = OneSignal.User.getTags();
+      if (existingTags && Object.keys(existingTags).length > 0) {
+        Object.assign(dataTags, existingTags);
+        renderTags();
+        console.log('[OneSignal] Loaded tags from server:', existingTags);
+      }
+    } catch (e) {
+      console.warn('[OneSignal] Could not retrieve tags:', e);
+    }
   }
 });
 
