@@ -1,26 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Push Shooter Demo</title>
-    <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-      defer
-    ></script>
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function (OneSignal) {
-        await OneSignal.init({
-          appId: "59ea98b1-26b6-4fe8-8ac9-803bdbf8ff99",
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <div id="game-area">
-      <div id="score">Score: 0</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basecamp | Outdoor Clothing & Gear</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+</head>
+<body>
+
+  <!-- Demo Disclaimer Modal -->
+  <div class="demo-modal-overlay" id="demoModal">
+    <div class="demo-modal">
+      <div class="demo-modal-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e73c3e" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M12 8v4" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16" r="0.5" fill="#e73c3e" stroke="none"/>
+        </svg>
+      </div>
+      <h2>This is not a real store</h2>
+      <p>Welcome to <strong>Basecamp</strong> — a fictional online shop built purely to demonstrate <strong>OneSignal's Web SDK</strong> functionality, including data tags, segmentation, and push notifications.</p>
+      <p class="demo-modal-sub">No real products are for sale and no transactions will be processed. Browse freely and watch the <strong>OneSignal Data Tags</strong> panel (bottom-right) update in real time as you interact with the site.</p>
+      <button class="btn demo-modal-btn" id="demoModalClose">Got it, let me explore</button>
     </div>
-    <script src="game.js"></script>
-  </body>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <p>Free Delivery on Orders Over £90 &nbsp;|&nbsp; <a href="#returns">Free Returns, No Time Limit</a></p>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <div class="nav-left">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#" data-category="new-arrivals" class="nav-link">New Arrivals</a></li>
+          <li class="has-dropdown">
+            <a href="#" data-category="womens" class="nav-link">Women's</a>
+            <div class="dropdown">
+              <div class="dropdown-col">
+                <h4>Shop by Category</h4>
+                <a href="#" data-category="womens-jackets">Jackets & Vests</a>
+                <a href="#" data-category="womens-fleece">Fleece</a>
+                <a href="#" data-category="womens-tops">Tops</a>
+                <a href="#" data-category="womens-bottoms">Bottoms</a>
+                <a href="#" data-category="womens-accessories">Hats & Accessories</a>
+              </div>
+              <div class="dropdown-col">
+                <h4>Shop by Sport</h4>
+                <a href="#" data-category="womens-climb">Climb</a>
+                <a href="#" data-category="womens-hike">Hike</a>
+                <a href="#" data-category="womens-trail-run">Trail Run</a>
+                <a href="#" data-category="womens-surf">Surf</a>
+                <a href="#" data-category="womens-snow">Snow</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" data-category="mens" class="nav-link">Men's</a>
+            <div class="dropdown">
+              <div class="dropdown-col">
+                <h4>Shop by Category</h4>
+                <a href="#" data-category="mens-jackets">Jackets & Vests</a>
+                <a href="#" data-category="mens-fleece">Fleece</a>
+                <a href="#" data-category="mens-tops">Tops</a>
+                <a href="#" data-category="mens-bottoms">Bottoms</a>
+                <a href="#" data-category="mens-accessories">Hats & Accessories</a>
+              </div>
+              <div class="dropdown-col">
+                <h4>Shop by Sport</h4>
+                <a href="#" data-category="mens-climb">Climb</a>
+                <a href="#" data-category="mens-hike">Hike</a>
+                <a href="#" data-category="mens-trail-run">Trail Run</a>
+                <a href="#" data-category="mens-surf">Surf</a>
+                <a href="#" data-category="mens-snow">Snow</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#" data-category="kids" class="nav-link">Kids'</a></li>
+          <li><a href="#" data-category="packs" class="nav-link">Packs & Gear</a></li>
+          <li><a href="#" data-category="sale" class="nav-link">Sale</a></li>
+        </ul>
+      </div>
+      <div class="nav-center">
+        <a href="#" class="logo">BASECAMP</a>
+      </div>
+      <div class="nav-right">
+        <button class="icon-btn search-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn account-btn" id="accountBtn" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-image" style="background-image: url('assets/hero-mountain.avif');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Summer 2026</p>
+        <h1>New Arrivals</h1>
+        <p class="hero-description">Fresh colours, timeless designs, and durable gear built for years of remote peaks, long trails and all the moments in between.</p>
+        <div class="hero-ctas">
+          <a href="#products" class="btn btn-primary" data-category="new-arrivals">Shop New Arrivals</a>
+          <a href="#products" class="btn btn-secondary" data-category="mens">Shop Men's</a>
+          <a href="#products" class="btn btn-secondary" data-category="womens">Shop Women's</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Cards -->
+  <section class="category-cards">
+    <div class="card-grid">
+      <a href="#products" class="category-card" data-category="womens">
+        <div class="card-image" style="background-image: url('assets/cat-womens.jpg');"></div>
+        <div class="card-label">
+          <h3>Women's</h3>
+          <span>Shop Now</span>
+        </div>
+      </a>
+      <a href="#products" class="category-card" data-category="mens">
+        <div class="card-image" style="background-image: url('assets/cat-mens.avif');"></div>
+        <div class="card-label">
+          <h3>Men's</h3>
+          <span>Shop Now</span>
+        </div>
+      </a>
+      <a href="#products" class="category-card" data-category="kids">
+        <div class="card-image" style="background-image: url('assets/cat-kids.avif');"></div>
+        <div class="card-label">
+          <h3>Kids'</h3>
+          <span>Shop Now</span>
+        </div>
+      </a>
+      <a href="#products" class="category-card" data-category="packs">
+        <div class="card-image" style="background-image: url('assets/cat-packs.avif');"></div>
+        <div class="card-label">
+          <h3>Packs & Gear</h3>
+          <span>Shop Now</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sport Tiles -->
+  <section class="sport-section">
+    <h2 class="section-title">Shop by Sport</h2>
+    <div class="sport-tiles">
+      <a href="#products" class="sport-tile" data-category="climb">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 22h20L12 2z"/></svg>
+        </div>
+        <span>Climb</span>
+      </a>
+      <a href="#products" class="sport-tile" data-category="hike">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-8 4 4 4-8 5 12H3z"/></svg>
+        </div>
+        <span>Hike</span>
+      </a>
+      <a href="#products" class="sport-tile" data-category="trail-run">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4v4l3 3-4 4-3-3-5 5"/><circle cx="16" cy="4" r="1.5"/></svg>
+        </div>
+        <span>Trail Run</span>
+      </a>
+      <a href="#products" class="sport-tile" data-category="surf">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg>
+        </div>
+        <span>Surf</span>
+      </a>
+      <a href="#products" class="sport-tile" data-category="snow">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+        </div>
+        <span>Snow</span>
+      </a>
+      <a href="#products" class="sport-tile" data-category="fly-fish">
+        <div class="sport-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 12s1.5-4 6-4 6 4 6 4-1.5 4-6 4-6-4-6-4z"/></svg>
+        </div>
+        <span>Fly Fish</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Banner -->
+  <section class="featured-banner">
+    <div class="banner-image" style="background-image: url('assets/banner-activism.jpg');">
+      <div class="hero-overlay"></div>
+      <div class="banner-content">
+        <h2>We Give Our Profits to the Planet</h2>
+        <p>1% of every sale goes to environmental organisations working to protect the places we love.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products-section" id="products">
+    <div class="products-header">
+      <h2 class="section-title" id="productsTitle">Featured Products</h2>
+      <div class="filter-bar">
+        <select id="filterCategory" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="jackets">Jackets & Vests</option>
+          <option value="fleece">Fleece</option>
+          <option value="tops">Tops & Tees</option>
+          <option value="bottoms">Pants & Shorts</option>
+          <option value="packs">Packs & Bags</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <select id="filterGender" class="filter-select">
+          <option value="all">Everyone</option>
+          <option value="mens">Men's</option>
+          <option value="womens">Women's</option>
+          <option value="kids">Kids'</option>
+        </select>
+        <select id="sortBy" class="filter-select">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products injected by JS -->
+    </div>
+  </section>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image" id="modalImage"></div>
+        <div class="modal-info">
+          <p class="modal-category" id="modalCategory"></p>
+          <h2 id="modalName"></h2>
+          <p class="modal-price" id="modalPrice"></p>
+          <div class="modal-colors" id="modalColors"></div>
+          <div class="modal-sizes">
+            <p class="size-label">Select Size</p>
+            <div class="size-options" id="modalSizes"></div>
+          </div>
+          <button class="btn btn-primary btn-full" id="addToCartBtn">Add to Cart</button>
+          <div class="modal-details">
+            <h4>Product Details</h4>
+            <p id="modalDescription"></p>
+            <ul id="modalFeatures"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="modal-close" id="cartClose">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">Your cart is empty</p>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display:none;">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cartTotal">£0.00</span>
+        </div>
+        <button class="btn btn-primary btn-full" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account / External ID Modal -->
+  <div class="modal-overlay" id="accountModal">
+    <div class="modal account-modal">
+      <button class="modal-close" id="accountModalClose">&times;</button>
+      <div class="account-modal-body">
+        <div class="account-modal-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2>Account Login</h2>
+        <p class="account-modal-desc">Enter an External ID to identify this user with OneSignal. This calls <code>OneSignal.login()</code> and links all activity to this identity.</p>
+        <div class="account-field">
+          <label for="externalIdInput">External ID</label>
+          <input type="text" id="externalIdInput" placeholder="e.g. user_12345 or email@example.com">
+        </div>
+        <div class="account-status" id="accountStatus"></div>
+        <div class="account-actions">
+          <button class="btn btn-primary account-save-btn" id="accountSaveBtn">Save & Login</button>
+          <button class="btn btn-secondary account-logout-btn" id="accountLogoutBtn" style="display:none;">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OneSignal Data Tags Panel (Demo Overlay) -->
+  <div class="os-panel" id="osPanel">
+    <div class="os-panel-header">
+      <div class="os-panel-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>OneSignal Data Tags</span>
+      </div>
+      <button class="os-panel-toggle" id="osPanelToggle">▼</button>
+    </div>
+    <div class="os-panel-body" id="osPanelBody">
+      <div class="os-tags" id="osTags">
+        <p class="os-empty">Browse the store to see data tags populate in real-time...</p>
+      </div>
+      <button class="btn btn-os" id="osClearTags">Clear All Tags</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#">New Arrivals</a>
+        <a href="#">Women's</a>
+        <a href="#">Men's</a>
+        <a href="#">Kids'</a>
+        <a href="#">Packs & Gear</a>
+        <a href="#">Sale</a>
+      </div>
+      <div class="footer-col">
+        <h4>Sports</h4>
+        <a href="#">Climb</a>
+        <a href="#">Hike</a>
+        <a href="#">Trail Run</a>
+        <a href="#">Surf</a>
+        <a href="#">Snow</a>
+        <a href="#">Fly Fish</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">Customer Service</a>
+        <a href="#">Delivery</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Product Care</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+        <a href="#">Find a Store</a>
+        <a href="#">1% for the Planet</a>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay in Touch</h4>
+        <p>Sign up for exclusive offers, stories, and updates.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email" id="newsletterEmail">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Basecamp. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Sale</a>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
 </html>
