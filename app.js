@@ -1,6 +1,10 @@
 // ============================================================
 //  BASECAMP STORE — Demo App for OneSignal Data Tags
+//  Version: 1.0.0
 // ============================================================
+
+const APP_VERSION = '1.0.0';
+console.log(`[Basecamp] v${APP_VERSION}`);
 
 // ---- Product Catalog ----
 const PRODUCTS = [
