@@ -1,9 +1,9 @@
 // ============================================================
 //  BASECAMP STORE — Demo App for OneSignal Data Tags
-//  Version: 1.0.0
+//  Version: 1.1.0
 // ============================================================
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 console.log(`[Basecamp] v${APP_VERSION}`);
 
 // ---- Product Catalog ----
@@ -310,6 +310,7 @@ document.getElementById('addToCartBtn').addEventListener('click', () => {
 
   // --- OneSignal: Tag add-to-cart ---
   setTag('last_item_added_to_cart', selectedProduct.name);
+  setTag('last_item_added_time', Math.floor(Date.now() / 1000));
   setTag('last_cart_category', selectedProduct.category);
   incrementTag('items_in_cart');
   setTag('cart_value', cart.reduce((sum, item) => sum + (item.salePrice || item.price), 0));
@@ -350,6 +351,7 @@ function updateCart() {
       setTag('cart_value', cart.reduce((sum, item) => sum + (item.salePrice || item.price), 0));
       if (cart.length === 0) {
         removeTag('last_item_added_to_cart');
+        removeTag('last_item_added_time');
         removeTag('last_cart_category');
         removeTag('sale_shopper');
       }
